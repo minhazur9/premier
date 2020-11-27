@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* font-family: 'Oswald', sans-serif; */
     font-family: 'Nunito', sans-serif;
 }
 
@@ -18,3 +17,33 @@
 .link {
     font-size: 25px;
 }
+
+/* ----------------- Movies */
+
+
+.movie-list {
+    display:grid;
+    position: relative;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 6em;
+    bottom: 100vh;
+    width: 75vw;
+    left: 25vw;
+}
+.movie-card {
+    width: 14vw;
+    height: 35vh;
+    border: solid 2px black;
+}
+
+.line-break {
+    width: 100%;
+  }
+
+.movie-nav {
+    display: inline-block;
+    position: relative;
+    width: 20vw;
+    height: 100vh;
+}
+
