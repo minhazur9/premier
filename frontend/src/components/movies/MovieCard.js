@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 class MovieCard extends React.Component {
     showInfo = (e) => {
@@ -17,6 +18,7 @@ class MovieCard extends React.Component {
 
     render() {
         return (
+            <Link to="/movies/details">
             <div onMouseEnter={this.showInfo} onMouseLeave={this.hideInfo} className='movie-card'>
                 <div style={{backgroundImage: `url(${this.props.image})`}} className='card-poster'> 
                 <div className="movie-card-info">
@@ -25,6 +27,7 @@ class MovieCard extends React.Component {
                 </div>
                 
             </div>
+            </Link>
         )
     }
 }
