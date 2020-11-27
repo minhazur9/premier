@@ -6,28 +6,35 @@ import MovieNav from '../components/movies/MovieNav'
 
 class MovieIndex extends React.Component {
 
-     key = '47b253083f612b83066bfaf81a01e411'
-    // componentDidMount() {
-    //     axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.key}&language=en-US&page=1`)
-    //         .then((response) => console.log(response.data))
-    // }
+    state = {
+        movies: [],
+    } 
+
+    
+
+    renderMovieCards() {
+        const imagePath = 'https://image.tmdb.org/t/p/original'
+        return this.state.movies.map((movie) => {
+            return (
+                <MovieCard key={movie.id} image={`${imagePath}${movie.poster_path}`}/>   
+            )     
+        })
+    }
+     
+    componentDidMount() {
+        const key = '47b253083f612b83066bfaf81a01e411'
+        axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`)
+            .then((response) => this.setState({movies: response.data.results}))
+    }
     render() {
         return (
             <>
             <h1>All Movies</h1>
             <MovieNav/>
                 <ul className="movie-list">
-                <MovieCard/>
-                <MovieCard/>
-                <MovieCard/>
-                <MovieCard/>
-                <MovieCard/>
-                <MovieCard/>
-                <MovieCard/>
-                <MovieCard/>
-                <MovieCard/>
-
+                {this.renderMovieCards()}
                 </ul>
+                
             
             </>
         )

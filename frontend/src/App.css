@@ -18,7 +18,7 @@
     font-size: 25px;
 }
 
-/* ----------------- Movies */
+/* ----------------- Movies Page */
 
 
 .movie-list {
@@ -31,9 +31,16 @@
     left: 25vw;
 }
 .movie-card {
-    width: 14vw;
-    height: 35vh;
+    width: 200px;
+    height: 270px;
     border: solid 2px black;
+}
+
+.card-poster {
+    height: 270px;
+    border: solid 1px black;
+    margin: 0 auto;
+    background-size: cover;
 }
 
 .line-break {
