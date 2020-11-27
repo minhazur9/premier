@@ -5,14 +5,14 @@ import routes from './config/routes';
 
 function App() {
   return (
-    <body className="app-container">
+    <div className="app-container">
       <Navbar/>
       <main>
       {routes}
       </main>
       
       <Footer/>
-    </body>
+    </div>
   );
 }
 

@@ -5,7 +5,7 @@
     font-family: 'Nunito', sans-serif;
 }
 
-body {
+.app-container {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -79,8 +79,8 @@ body {
     animation-duration: 300ms;
 }
 
-.card-title {
-    
+.movie-link {
+    color:black
 }
 
 

@@ -18,7 +18,7 @@ class MovieCard extends React.Component {
 
     render() {
         return (
-            <Link to="/movies/details">
+            <Link className="movie-link"  to={`/movies/${this.props.id}`}>
             <div onMouseEnter={this.showInfo} onMouseLeave={this.hideInfo} className='movie-card'>
                 <div style={{backgroundImage: `url(${this.props.image})`}} className='card-poster'> 
                 <div className="movie-card-info">

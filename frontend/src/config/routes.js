@@ -7,7 +7,7 @@ import MovieIndex from '../pages/MovieIndex';
 export default (
     <Switch>
         <Route exact path='/' component={Home}/>
-        <Route path='/movies/details' component={MovieDetails}/>
+        <Route path='/movies/:movieId' component={MovieDetails}/>
         <Route path='/movies' component={MovieIndex}/>
     </Switch>
 )

@@ -17,7 +17,7 @@ class MovieIndex extends React.Component {
         return this.state.movies.map((movie) => {
             console.log(movie);
             return (
-                <MovieCard key={movie.id} title={movie.original_title} image={`${imagePath}${movie.poster_path}`}/>   
+                <MovieCard key={movie.id} id={movie.id} title={movie.original_title} image={`${imagePath}${movie.poster_path}`}/>   
             )     
         })
     }
