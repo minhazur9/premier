@@ -36,10 +36,6 @@
     border: solid 2px black;
 }
 
-.movie-card:hover {
-
-}
-
 .card-poster {
     position: relative;
     height: 268px;
@@ -48,9 +44,6 @@
     background-size: cover;
 }
 
-.line-break {
-    width: 100%;
-  }
 
 .movie-nav {
     display: inline-block;
@@ -63,8 +56,34 @@
     opacity: 0;
     position: absolute;
     width: 196px;
-    height: 50px;
+    height: 0;
     bottom: 0;
     background-color:white;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-duration: 300ms;
 }
 
+
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        height: 0;
+    }
+    100% {
+        height: 50px;
+        opacity: 100;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        height: 50px;
+        opacity: 100;
+    }
+    100% {
+        height: 0;
+        opacity: 0;
+    }
+}
