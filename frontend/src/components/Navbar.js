@@ -11,8 +11,12 @@ function Navbar(props) {
         <li><a href="collapsible.html" className='link'>TV Shows</a></li>
       </ul>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
-        <li><a href="/" className='link' >Signup</a></li>
-        <li><NavLink to="/login" className='link'>Login</NavLink></li>
+      {props.loggedIn 
+          ? <li><NavLink to="/" onClick={props.logOut} className='link' >Logout</NavLink></li>
+          :  <><li><NavLink to="/signup" className='link' >Signup</NavLink></li>
+              <li><NavLink to="/login" className='link'>Login</NavLink></li></>
+      }
+        
       </ul>
     </div>
   </nav>

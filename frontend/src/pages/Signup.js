@@ -1,12 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 
-class Login extends React.Component {
+class Signup extends React.Component {
     state = {
         username: '',
         password: '',
-        completed: false,
-        invalid: false
+        completed: false
     }
 
     handleInputChange = (e) => {
@@ -19,11 +18,19 @@ class Login extends React.Component {
         }
     }
 
+    handleFormSubmit = (event) => {
+        event.preventDefault();
+        axios.post('http://localhost:8000/accounts/token/',
+        {username:this.state.username, password:this.state.password})
+        .then((response) => console.log(response.data.token))
+
+    }
+
     render() {
         return (
             <>
-            <h1>Login</h1>
-            <form  onSubmit={e => this.props.handleLogin(e, this.state)} className="login-form">
+            <h1>Signup</h1>
+            <form  onSubmit={this.handleFormSubmit}  className="login-form">
             <div className="input-form">
                 <label htmlFor="username">Username</label>
                 <input 
@@ -37,7 +44,7 @@ class Login extends React.Component {
             <div className="input-form">
                 <label htmlFor="password">Password</label>
                 <input 
-                type="password"
+                type="text"
                 onChange={this.handleInputChange}   
                 value={this.state.password} 
                 name="password"
@@ -53,4 +60,4 @@ class Login extends React.Component {
     
 }
 
-export default Login;
+export default Signup;
