@@ -13,6 +13,7 @@
 
   main {
     flex: 1 0 auto;
+    max-height: 250vh;
   }
 
 /* ----------------- Links */
@@ -36,7 +37,7 @@ nav .active {
     position: relative;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     row-gap: 6em;
-    bottom: 100vh;
+    bottom: 231vh;
     width: 75vw;
     left: 25vw;
 }
@@ -64,7 +65,7 @@ nav .active {
     display: inline-block;
     position: relative;
     width: 20vw;
-    height: 100vh;
+    height: 230vh;
 }
 
 .movie-card-info {
