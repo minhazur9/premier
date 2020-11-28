@@ -4,8 +4,10 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import routes from './config/routes';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 import axios from 'axios';
 import './App.css';
+
 
 class App extends React.Component {
   state = {
@@ -45,6 +47,18 @@ class App extends React.Component {
         })
   };
 
+  handleSignup = (e, data) => {
+    e.preventDefault();
+    axios.post('http://localhost:8000/premier/users/', { username: data.username, password: data.password})
+      .then((response) => {
+        localStorage.setItem('token', response.data.token);
+        this.setState({
+          loggedIn: true,
+          username: response.data.username
+        });
+      });
+  };
+
   handleLogout = () => {
     localStorage.removeItem('token');
     this.setState({ loggedIn: false, username: '' });
@@ -58,6 +72,7 @@ class App extends React.Component {
         {routes}
         <Switch>
           <Route path="/login" render={() => <Login handleLogin={this.handleLogin}/>}/>
+          <Route path='/signup' component={() => <Signup handleSignup={this.handleSignup}/>}/>
         </Switch>
         </main>
         <Footer/>

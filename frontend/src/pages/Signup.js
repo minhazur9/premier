@@ -30,7 +30,7 @@ class Signup extends React.Component {
         return (
             <>
             <h1>Signup</h1>
-            <form  onSubmit={this.handleFormSubmit}  className="login-form">
+            <form  onSubmit={e => this.props.handleSignup(e, this.state)}  className="login-form">
             <div className="input-form">
                 <label htmlFor="username">Username</label>
                 <input 
