@@ -34,6 +34,7 @@ class CurrentUser(APIView):
     def get(self,request,format=None):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
+    
 
 # @api_view(['GET'])
 # def current_user(request):
@@ -48,6 +49,8 @@ class UserList(APIView):
         serializer = UserSerializerWithToken(data=request.data)
         if serializer.is_valid():
             serializer.save()
+            user = User.objects.get(username=serializer.data['username'])
+            Profile.objects.create(user=user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
