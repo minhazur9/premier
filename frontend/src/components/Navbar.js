@@ -8,7 +8,7 @@ function Navbar(props) {
       <Link to="/" className="brand-logo">Premier</Link>
       <ul className="left hide-on-med-and-down">
         <li><NavLink to="/movies" className='link movies-tab'>Movies</NavLink></li>
-        <li><a href="collapsible.html" className='link'>TV Shows</a></li>
+        <li><NavLink to="/shows" className='link'>TV Shows</NavLink></li>
       </ul>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
       {props.loggedIn 
