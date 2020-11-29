@@ -1,10 +1,7 @@
 import React from 'react'
-import {Switch,Route, Redirect} from 'react-router-dom'
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import routes from './config/routes';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Routes from './config/routes';
 import axios from 'axios';
 import './App.css';
 
@@ -49,7 +46,11 @@ class App extends React.Component {
 
   handleSignup = (e, data) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/premier/users/', { username: data.username, password: data.password})
+    axios.post('http://localhost:8000/premier/users/', 
+    { username: data.username, 
+      password: data.password, 
+      first_name: data.firstName, 
+      last_name: data.lastName})
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         this.setState({
@@ -69,11 +70,7 @@ class App extends React.Component {
       <div className="app-container">
         <Navbar logOut={this.handleLogout} loggedIn={this.state.loggedIn}/>
         <main>
-        {routes}
-        <Switch>
-          <Route path="/login" render={() => <Login handleLogin={this.handleLogin}/>}/>
-          <Route path='/signup' component={() => <Signup handleSignup={this.handleSignup}/>}/>
-        </Switch>
+        <Routes handleSignup={this.handleSignup} handleLogin={this.handleLogin}/>
         </main>
         <Footer/>
       </div>

@@ -5,6 +5,8 @@ class Signup extends React.Component {
     state = {
         username: '',
         password: '',
+        firstName: '',
+        lastName: '',
         completed: false
     }
 
@@ -18,19 +20,31 @@ class Signup extends React.Component {
         }
     }
 
-    handleFormSubmit = (event) => {
-        event.preventDefault();
-        axios.post('http://localhost:8000/accounts/token/',
-        {username:this.state.username, password:this.state.password})
-        .then((response) => console.log(response.data.token))
-
-    }
-
     render() {
         return (
             <>
             <h1>Signup</h1>
             <form  onSubmit={e => this.props.handleSignup(e, this.state)}  className="login-form">
+            <div className="input-form">
+                <label htmlFor="firstName">First Name</label>
+                <input 
+                type="text"
+                onChange={this.handleInputChange}   
+                value={this.state.firstName} 
+                name="firstName"
+                className="login-input"
+                />
+            </div>
+            <div className="input-form">
+                <label htmlFor="lastName">Last Name</label>
+                <input 
+                type="text"
+                onChange={this.handleInputChange}   
+                value={this.state.lastName} 
+                name="lastName"
+                className="login-input"
+                />
+            </div>
             <div className="input-form">
                 <label htmlFor="username">Username</label>
                 <input 
