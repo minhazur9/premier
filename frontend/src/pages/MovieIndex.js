@@ -16,7 +16,7 @@ class MovieIndex extends React.Component {
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return this.state.movies.map((movie) => {
             return (
-                <MovieCard key={movie.id} id={movie.id} title={movie.original_title} image={`${imagePath}${movie.poster_path}`}/>   
+                <MovieCard key={movie.id} id={movie.id} title={movie.title} image={`${imagePath}${movie.poster_path}`}/>   
             )     
         })
     }
