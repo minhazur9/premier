@@ -7,6 +7,7 @@ class Signup extends React.Component {
         password: '',
         firstName: '',
         lastName: '',
+        email: '',
         completed: false
     }
 
@@ -42,6 +43,16 @@ class Signup extends React.Component {
                 onChange={this.handleInputChange}   
                 value={this.state.lastName} 
                 name="lastName"
+                className="login-input"
+                />
+            </div>
+            <div className="input-form">
+                <label htmlFor="email">Email</label>
+                <input 
+                type="text"
+                onChange={this.handleInputChange}   
+                value={this.state.email} 
+                name="email"
                 className="login-input"
                 />
             </div>

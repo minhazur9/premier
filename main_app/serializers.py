@@ -17,6 +17,7 @@ class UserSerializerWithToken(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True,required=True)
     first_name = serializers.CharField(required=True)
     last_name = serializers.CharField(required=True)
+    email = serializers.CharField(required=True)
 
 
     def get_token(self, obj):
@@ -31,6 +32,8 @@ class UserSerializerWithToken(serializers.ModelSerializer):
         password = validated_data.pop('password', None)
         first_name = validated_data['first_name']
         last_name = validated_data['last_name']
+        email = validated_data['email']
+
         print(validated_data)
         instance = self.Meta.model(**validated_data)
         # if password is not None:
@@ -40,7 +43,7 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('token', 'username', 'password', 'first_name', 'last_name')
+        fields = ('token', 'username', 'password', 'first_name', 'last_name','email')
 
 class ProfileSerializer(serializers.ModelSerializer):
     

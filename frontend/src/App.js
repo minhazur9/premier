@@ -50,7 +50,9 @@ class App extends React.Component {
     { username: data.username, 
       password: data.password, 
       first_name: data.firstName, 
-      last_name: data.lastName})
+      last_name: data.lastName,
+      email: data.email
+    })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         this.setState({
