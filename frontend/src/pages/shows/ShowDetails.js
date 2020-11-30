@@ -6,9 +6,19 @@ class ShowDetails extends React.Component {
 
     state = {
         show: {},
-        userAverage: 'NA'
+        userAverage: 'NA',
+        loading: true
     }
 
+    renderLoadingIcon() {
+        return (
+            <div className="lds-facebook details-loading-container">
+            <div className='details-loading'>   
+            </div><div className='details-loading'>
+            </div><div className='details-loading'></div>
+            </div>
+        )
+    }
     
     renderShowDetails() {
         const months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec']
@@ -18,7 +28,7 @@ class ShowDetails extends React.Component {
         const criticAverage = Number(this.state.show.vote_average).toString();
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return (
-            <div className='details-background'>
+            <>
                 <div style={{backgroundImage: `url(${imagePath}${this.state.show.poster_path})`}} className='movie-poster'></div>
                 <div className="details-text">
                     <h1 className='title'>{this.state.show.name}</h1>
@@ -35,7 +45,7 @@ class ShowDetails extends React.Component {
                                          ${months[lastDate.getMonth()]} ${lastDate.getDate()} ${lastDate.getFullYear()}`}
                     </p>
                 </div>
-            </div>
+                </>
         )
     }
 
@@ -45,14 +55,16 @@ class ShowDetails extends React.Component {
         axios.get(`https://api.themoviedb.org/3/tv/${showId}?api_key=${key}&language=en-US`)
         .then((response) => {
             console.log(response.data)
-            this.setState({show:response.data})
+            this.setState({show:response.data, loading:false})
         })
     }
     
     render() {
         return(
             <>
-                {this.renderShowDetails()}
+                <div className='details-background'>
+                {this.state.loading ? this.renderLoadingIcon() : this.renderShowDetails() }
+                </div>
             </>
         )
     }

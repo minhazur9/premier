@@ -7,7 +7,18 @@ class MovieDetails extends React.Component {
     state = {
         movie: {},
         userAverage: 'NA',
-        companyList: []
+        companyList: [],
+        loading: true
+    }
+
+    renderLoadingIcon() {
+        return (
+            <div className="lds-facebook details-loading-container">
+            <div className='details-loading'>   
+            </div><div className='details-loading'>
+            </div><div className='details-loading'></div>
+            </div>
+        )
     }
 
     renderProductionCompanies() {
@@ -21,7 +32,7 @@ class MovieDetails extends React.Component {
         const imagePath = 'https://image.tmdb.org/t/p/original'
         console.log(`${imagePath}${this.state.image}`)
         return (
-            <div className="details-background">
+            <>
                 <div style={{backgroundImage: `url(${imagePath}${this.state.movie.poster_path})`}} className='movie-poster'></div>
                 <div className="details-text">
                     <h1 className="title">{this.state.movie.title}</h1>
@@ -35,7 +46,7 @@ class MovieDetails extends React.Component {
                     <p className="run-time">Runtime: {this.state.movie.runtime} Minutes</p>
                     <ul className="production">{this.renderProductionCompanies()}</ul>
                 </div>
-            </div>
+            </>
         )
     }
 
@@ -46,14 +57,16 @@ class MovieDetails extends React.Component {
         axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}&language=en-US`)
         .then((response) => {
             console.log(response.data)
-            this.setState({movie:response.data, companyList:response.data.production_companies})
+            this.setState({movie:response.data, companyList:response.data.production_companies, loading:false})
         })
     }
     
     render() {
         return(
             <>
-                {this.renderMovieDetails()}
+                <div className='details-background'>
+                {this.state.loading ? this.renderLoadingIcon() : this.renderMovieDetails() }
+                </div>
             </>
         )
     }
