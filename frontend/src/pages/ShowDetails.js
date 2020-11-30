@@ -5,18 +5,18 @@ import axios from 'axios';
 class ShowDetails extends React.Component {
 
     state = {
-        name: '',
-        image: '',
+        show: {}
     }
 
     renderShowDetails() {
         const imagePath = 'https://image.tmdb.org/t/p/original'
-        console.log(`${imagePath}${this.state.image}`)
         return (
-            <>
-            <h1>{this.state.name}</h1>
-            <div style={{backgroundImage: `url(${imagePath}${this.state.image})`}} className='movie-poster'></div>
-            </>
+            <div className='details-background'>
+            <div style={{backgroundImage: `url(${imagePath}${this.state.show.poster_path})`}} className='movie-poster'></div>
+            <div className="details-text"><h1 className='title'>{this.state.show.name}</h1>
+            <p className='tagline'>{this.state.show.tagline}</p>
+            </div>
+            </div>
         )
     }
 
@@ -26,7 +26,7 @@ class ShowDetails extends React.Component {
         axios.get(`https://api.themoviedb.org/3/tv/${showId}?api_key=${key}&language=en-US`)
         .then((response) => {
             console.log(response.data)
-            this.setState({title:response.data.name, image:response.data.poster_path})
+            this.setState({show:response.data})
         })
     }
     
