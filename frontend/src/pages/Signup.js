@@ -8,6 +8,7 @@ class Signup extends React.Component {
         firstName: '',
         lastName: '',
         email: '',
+        verify: '',
         completed: false
     }
 
@@ -25,7 +26,12 @@ class Signup extends React.Component {
         return (
             <>
             <h1>Signup</h1>
-            <form  onSubmit={e => this.props.handleSignup(e, this.state)}  className="login-form">
+            <form  onSubmit={e => {
+                this.props.handleSignup(e, this.state)
+                if(this.state.password !== this.state.verify ) return;
+                this.props.redirect()
+                }}  
+                className="login-form">
             <div className="input-form">
                 <label htmlFor="firstName">First Name</label>
                 <input 
@@ -49,7 +55,7 @@ class Signup extends React.Component {
             <div className="input-form">
                 <label htmlFor="email">Email</label>
                 <input 
-                type="text"
+                type="email"
                 onChange={this.handleInputChange}   
                 value={this.state.email} 
                 name="email"
@@ -69,10 +75,20 @@ class Signup extends React.Component {
             <div className="input-form">
                 <label htmlFor="password">Password</label>
                 <input 
-                type="text"
+                type="password"
                 onChange={this.handleInputChange}   
                 value={this.state.password} 
                 name="password"
+                className="login-input"
+                />
+            </div>
+            <div className="input-form">
+                <label htmlFor="verify">Confirm Password</label>
+                <input 
+                type="password"
+                onChange={this.handleInputChange}   
+                value={this.state.verify} 
+                name="verify"
                 className="login-input"
                 />
             </div>
