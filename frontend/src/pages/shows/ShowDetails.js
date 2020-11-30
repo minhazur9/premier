@@ -25,6 +25,8 @@ class ShowDetails extends React.Component {
                     </div>
                     <p className="user-score-header">Average User Score</p>
                     <div className='score-container user-score'>{this.state.userAverage}</div>
+                    <p className="episode-count">{this.state.show.number_of_episodes} Episodes</p>
+                    <p className="season-count">{this.state.show.number_of_seasons} Seasons</p>
                 </div>
             </div>
         )

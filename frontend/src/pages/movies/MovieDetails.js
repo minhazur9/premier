@@ -25,6 +25,7 @@ class MovieDetails extends React.Component {
                     </div>
                 <p className="user-score-header">Average User Score</p>
                 <div className='score-container user-score'>{this.state.userAverage}</div>
+                
             </div>
             
             
