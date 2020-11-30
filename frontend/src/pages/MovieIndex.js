@@ -8,9 +8,16 @@ class MovieIndex extends React.Component {
 
     state = {
         movies: [],
+        loading: true
     } 
 
     
+
+    renderLoadingIcon() {
+        return (
+            <div class="lds-facebook"><div></div><div></div><div></div></div>
+        )
+    }
 
     renderMovieCards() {
         const imagePath = 'https://image.tmdb.org/t/p/original'
@@ -24,7 +31,7 @@ class MovieIndex extends React.Component {
     componentDidMount() {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`)
-            .then((response) => this.setState({movies: response.data.results}))
+            .then((response) => this.setState({movies: response.data.results, loading: false}))
     }
     render() {
         return (
@@ -32,7 +39,7 @@ class MovieIndex extends React.Component {
             <h1>All Movies</h1>
             <MovieNav/>
                 <ul className="movie-list">
-                {this.renderMovieCards()}
+                {this.state.loading ? this.renderLoadingIcon() : this.renderMovieCards() }
                 </ul>
                 
             

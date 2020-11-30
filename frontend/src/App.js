@@ -10,8 +10,6 @@ class App extends React.Component {
   state = {
     loggedIn: localStorage.getItem('token') ? true : false,
     username: '',
-    error: false
-    
   }
 
   componentDidMount() {

@@ -31,7 +31,7 @@ class Signup extends React.Component {
                 if(this.state.password !== this.state.verify ) return;
                 this.props.redirect()
                 }}  
-                className="login-form">
+                className="signup-form">
             <div className="input-form">
                 <label htmlFor="firstName">First Name</label>
                 <input 

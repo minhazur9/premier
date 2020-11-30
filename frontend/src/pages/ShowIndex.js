@@ -5,8 +5,16 @@ import ShowCard from '../components/shows/ShowCard'
 
 class ShowIndex extends React.Component {
     state = {
-        shows: []
+        shows: [],
+        loading: true
     }
+
+    renderLoadingIcon() {
+        return (
+            <div class="lds-facebook"><div></div><div></div><div></div></div>
+        )
+    }
+
 
     renderShowCards() {
         const imagePath = 'https://image.tmdb.org/t/p/original'
@@ -21,7 +29,7 @@ class ShowIndex extends React.Component {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`)
             .then((response) => {
-                this.setState({shows: response.data.results})
+                this.setState({shows: response.data.results, loading: false})
             })
     }
 
@@ -31,7 +39,7 @@ class ShowIndex extends React.Component {
         <h1>All Shows</h1>
         <MovieNav/>
         <ul className="movie-list">
-            {this.renderShowCards()}
+            {this.state.loading ? this.renderLoadingIcon() : this.renderShowCards()}
         </ul>
         </>
         )
