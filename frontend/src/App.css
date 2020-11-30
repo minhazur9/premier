@@ -236,6 +236,28 @@ nav .active {
     bottom: 17px;
 }
 
+.run-time {
+    position: relative;
+    font-size: 20px;
+    color: white;
+    left: 445px;
+    top: 16px;
+}
+
+.production {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    left: 603px;
+    bottom: 49px;
+}
+
+.company-name {
+    font-size: 20px;
+    color: white;
+}
+
 
 
 /* ----------------- Login */
