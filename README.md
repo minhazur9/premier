@@ -14,15 +14,30 @@ A user should be able to sign up with an email address, a username, and a passwo
 
 When a user is logged in the navbar should change slighly by having the login/signup links replaced with log out and profile links.
 
-### Movie Index
+### Movie/Show Index
 
-Movies should appear and it should also be paginated with 20 movies as the limit per page.
+Movies/Shows should appear and it should also be paginated with 20 movies as the limit per page.
 
 There should be a side nav that is used to filter what kind of movies will appear.
 
-The title, average rating, and poster of the movies should appear and be links to their respective pages to show more details of the movie.
+The title, average rating, and poster of the movies/shows should appear and be links to their respective pages to show more details
 
-### Movie Details
+### Movie/Show Details
+
+Movies/Shows should be have the title, poster art, a tagline, an overview, an average rating, number of ep, number of seasons, a trailer and the newtworks it is available to watch in.
+
+There should be a review section where users can submit their score and reviews.
+
+Only a logged in user can add, edit and delete their own reviews and scores.
+
+A logged in user can also add it to their movie or show recommendations
+
+### Profile Page
+
+Users should be able to see their profile details like name, email, and profile picture and edit them if they are the owner
+
+You should also be able to see a list of recommendations even if you are not logged in which are all linked to their details pages.
+
 
 
 

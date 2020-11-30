@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import Home from '../pages/Home';
-import MovieDetails from '../pages/MovieDetails';
-import MovieIndex from '../pages/MovieIndex';
-import ShowDetails from '../pages/ShowDetails';
-import ShowIndex from '../pages/ShowIndex';
+import MovieDetails from '../pages/movies/MovieDetails';
+import MovieIndex from '../pages//movies/MovieIndex';
+import ShowDetails from '../pages/shows/ShowDetails';
+import ShowIndex from '../pages/shows/ShowIndex';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 

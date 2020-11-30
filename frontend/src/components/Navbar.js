@@ -12,7 +12,7 @@ function Navbar(props) {
       </ul>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
       {props.loggedIn 
-          ? <li><NavLink to="/" onClick={props.logOut} className='link' >Logout</NavLink></li>
+          ? <li><Link to="/" onClick={props.logOut} className='link' >Logout</Link></li>
           :  <><li><NavLink to="/signup" className='link' >Signup</NavLink></li>
               <li><NavLink to="/login" className='link'>Login</NavLink></li></>
       }

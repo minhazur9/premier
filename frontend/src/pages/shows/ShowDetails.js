@@ -5,17 +5,24 @@ import axios from 'axios';
 class ShowDetails extends React.Component {
 
     state = {
-        show: {}
+        show: {},
+        averageScore: 'N/A'
     }
 
     renderShowDetails() {
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return (
             <div className='details-background'>
-            <div style={{backgroundImage: `url(${imagePath}${this.state.show.poster_path})`}} className='movie-poster'></div>
-            <div className="details-text"><h1 className='title'>{this.state.show.name}</h1>
-            <p className='tagline'>{this.state.show.tagline}</p>
-            </div>
+                <div style={{backgroundImage: `url(${imagePath}${this.state.show.poster_path})`}} className='movie-poster'></div>
+                <div className="details-text">
+                    <h1 className='title'>{this.state.show.name}</h1>
+                    <p className='tagline'>{this.state.show.tagline}</p>
+                    <p className="critic-score-header">Average Critic Score</p>
+                    <div className='score-container'>
+                        {this.state.show.vote_average}
+                    </div>
+                    <div className='score-container'>{this.state.averageScore}</div>
+                </div>
             </div>
         )
     }

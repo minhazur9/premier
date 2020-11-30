@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import MovieCard from '../components/movies/MovieCard';
-import MovieNav from '../components/movies/MovieNav'
+import MovieCard from '../../components/movies/MovieCard';
+import MovieNav from '../../components/movies/MovieNav'
 
 
 class MovieIndex extends React.Component {
@@ -15,7 +15,7 @@ class MovieIndex extends React.Component {
 
     renderLoadingIcon() {
         return (
-            <div class="lds-facebook"><div></div><div></div><div></div></div>
+            <div className="lds-facebook"><div></div><div></div><div></div></div>
         )
     }
 
