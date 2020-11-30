@@ -5,19 +5,26 @@ import axios from 'axios';
 class MovieDetails extends React.Component {
 
     state = {
-        movie: {}
+        movie: {},
+        userAverage: 'NA',
     }
 
     renderMovieDetails() {
+        const criticAverage = Number(this.state.movie.vote_average).toString();
         const imagePath = 'https://image.tmdb.org/t/p/original'
         console.log(`${imagePath}${this.state.image}`)
         return (
             <div className="details-background">
-            <div style={{backgroundImage: `url(${imagePath}${this.state.movie.poster_path})`}} className='movie-poster'></div>
-            <div className="details-text">
-            <h1 className="title">{this.state.movie.title}</h1>
-            <p className='tagline'>{this.state.movie.tagline}</p>
-
+                <div style={{backgroundImage: `url(${imagePath}${this.state.movie.poster_path})`}} className='movie-poster'></div>
+                <div className="details-text">
+                <h1 className="title">{this.state.movie.title}</h1>
+                <p className='tagline'>{this.state.movie.tagline}</p>
+                <p className="critic-score-header">Average Critic Score</p>
+                    <div className='score-container'>
+                        {criticAverage.length === 1 ? criticAverage + '.0' : criticAverage}
+                    </div>
+                <p className="user-score-header">Average User Score</p>
+                <div className='score-container user-score'>{this.state.userAverage}</div>
             </div>
             
             

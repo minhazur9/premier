@@ -6,12 +6,12 @@ class ShowDetails extends React.Component {
 
     state = {
         show: {},
-        averageScore: 'NA'
+        userAverage: 'NA'
     }
 
     
     renderShowDetails() {
-        const voteAverage = Number(this.state.show.vote_average).toString();
+        const criticAverage = Number(this.state.show.vote_average).toString();
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return (
             <div className='details-background'>
@@ -21,11 +21,10 @@ class ShowDetails extends React.Component {
                     <p className='tagline'>{this.state.show.tagline}</p>
                     <p className="critic-score-header">Average Critic Score</p>
                     <div className='score-container'>
-                    
-                    {voteAverage.length === 1 ? voteAverage + '.0' : voteAverage}
+                        {criticAverage.length === 1 ? criticAverage + '.0' : criticAverage}
                     </div>
                     <p className="user-score-header">Average User Score</p>
-                    <div className='score-container user-score'>{this.state.averageScore}</div>
+                    <div className='score-container user-score'>{this.state.userAverage}</div>
                 </div>
             </div>
         )
