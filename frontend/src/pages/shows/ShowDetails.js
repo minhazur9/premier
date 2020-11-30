@@ -11,6 +11,10 @@ class ShowDetails extends React.Component {
 
     
     renderShowDetails() {
+        const months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec']
+        const releaseDate = new Date(this.state.show.first_air_date)
+        const lastDate = new Date(this.state.show.last_air_date)
+        console.log(releaseDate);
         const criticAverage = Number(this.state.show.vote_average).toString();
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return (
@@ -27,6 +31,9 @@ class ShowDetails extends React.Component {
                     <div className='score-container user-score'>{this.state.userAverage}</div>
                     <p className="episode-count">{this.state.show.number_of_episodes} Episodes</p>
                     <p className="season-count">{this.state.show.number_of_seasons} Seasons</p>
+                    <p className="dates">{`${months[releaseDate.getMonth()]} ${releaseDate.getDate()} ${releaseDate.getFullYear()} -
+                                         ${months[lastDate.getMonth()]} ${lastDate.getDate()} ${lastDate.getFullYear()}`}
+                    </p>
                 </div>
             </div>
         )
