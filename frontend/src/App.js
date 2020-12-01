@@ -26,6 +26,7 @@ class App extends React.Component {
     
   }
 
+  // Get token from login
   handleLogin = (e,data) => {
     e.preventDefault();
     axios.post('http://localhost:8000/accounts/token/', {username: data.username, password: data.password})
@@ -42,6 +43,7 @@ class App extends React.Component {
         })
   };
 
+  // Create a user and get token to login
   handleSignup = (e, data) => {
     e.preventDefault();
     axios.post('http://localhost:8000/premier/users/', 
@@ -60,6 +62,7 @@ class App extends React.Component {
       });
   };
 
+  // Destroy token to logout
   handleLogout = () => {
     localStorage.removeItem('token');
     this.setState({ loggedIn: false, username: '' });

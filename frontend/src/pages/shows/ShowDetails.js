@@ -6,10 +6,11 @@ class ShowDetails extends React.Component {
 
     state = {
         show: {},
-        userAverage: 'NA',
+        userAverage: '---',
         loading: true
     }
 
+    // Render Loading Icon
     renderLoadingIcon() {
         return (
             <div className="lds-facebook details-loading-container">
@@ -19,13 +20,41 @@ class ShowDetails extends React.Component {
             </div>
         )
     }
+
+    renderCriticRating(criticAverage) {
+        let colorClass = ""
+        if (!Number(criticAverage)) colorClass = ""
+        else if (Number(criticAverage) >= 8) colorClass = "good"
+        else if (Number(criticAverage) >= 5) colorClass = "meh"
+        else colorClass = "bad"
+        return (
+            <div className={`score-container ${colorClass}`}>
+            {Number(criticAverage) >= 8 && console.log(this.className)}
+            {criticAverage.length === 1 ? criticAverage + '.0' : criticAverage}
+        </div>
+        )
+    }
+
+    renderUserRating(userAverage) {
+        let colorClass = ""
+        if (!Number(userAverage)) colorClass = ""
+        else if (Number(userAverage) >= 8) colorClass = "good"
+        else if (Number(userAverage) >= 5) colorClass = "meh"
+        else colorClass = "bad"
+        return (
+            <div className={`score-container user-score ${colorClass}`}>
+            {Number(userAverage) >= 8 && console.log(this.className)}
+            {userAverage.length === 1 ? userAverage + '.0' : userAverage}
+        </div>
+        )
+    }
     
+    // Render All the data of the show
     renderShowDetails() {
         const months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec']
+        const criticAverage = Number(this.state.show.vote_average).toString();
         const releaseDate = new Date(this.state.show.first_air_date)
         const lastDate = new Date(this.state.show.last_air_date)
-        console.log(releaseDate);
-        const criticAverage = Number(this.state.show.vote_average).toString();
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return (
             <>
@@ -34,11 +63,9 @@ class ShowDetails extends React.Component {
                     <h1 className='title'>{this.state.show.name}</h1>
                     <p className='tagline'>{this.state.show.tagline}</p>
                     <p className="critic-score-header">Average Critic Score</p>
-                    <div className='score-container'>
-                        {criticAverage.length === 1 ? criticAverage + '.0' : criticAverage}
-                    </div>
+                    {this.renderCriticRating(criticAverage)}
                     <p className="user-score-header">Average User Score</p>
-                    <div className='score-container user-score'>{this.state.userAverage}</div>
+                    {this.renderUserRating(this.state.userAverage)}
                     <p className="episode-count">{this.state.show.number_of_episodes} Episodes</p>
                     <p className="season-count">{this.state.show.number_of_seasons} Seasons</p>
                     <p className="dates">{`${months[releaseDate.getMonth()]} ${releaseDate.getDate()} ${releaseDate.getFullYear()} -

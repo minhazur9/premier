@@ -9,13 +9,14 @@ class ShowIndex extends React.Component {
         loading: true
     }
 
+    // Render Loading Icon
     renderLoadingIcon() {
         return (
             <div className="lds-facebook"><div></div><div></div><div></div></div>
         )
     }
 
-
+    // Render Show Cards
     renderShowCards() {
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return this.state.shows.map((show) => {

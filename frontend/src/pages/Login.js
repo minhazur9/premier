@@ -9,6 +9,7 @@ class Login extends React.Component {
         invalid: false
     }
 
+    // Set state to the current input
     handleInputChange = (e) => {
         if (e.target.name === 'completed') {
             this.setState((prevState) => {

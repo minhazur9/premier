@@ -2,12 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 class ShowCard extends React.Component {
+    // Show title and rating
     showInfo = (e) => {
           const info = e.currentTarget.childNodes[0].childNodes[0];
           e.currentTarget.style.animationName = 'select';
           info.style.animationName = 'slideUp';       
     }
 
+    // Hide title and rating
     hideInfo = (e) => {
         const info = e.currentTarget.childNodes[0].childNodes[0];
           e.currentTarget.style.animationName = 'deselect';

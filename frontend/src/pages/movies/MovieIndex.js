@@ -13,12 +13,14 @@ class MovieIndex extends React.Component {
 
     
 
+    // Render Loading Icon
     renderLoadingIcon() {
         return (
             <div className="lds-facebook"><div></div><div></div><div></div></div>
         )
     }
 
+    // Render Movie Cards
     renderMovieCards() {
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return this.state.movies.map((movie) => {

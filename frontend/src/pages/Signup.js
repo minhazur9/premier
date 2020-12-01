@@ -12,6 +12,7 @@ class Signup extends React.Component {
         completed: false
     }
 
+    // Set state to the current input
     handleInputChange = (e) => {
         if (e.target.name === 'completed') {
             this.setState((prevState) => {

@@ -266,7 +266,17 @@ nav .active {
     left: 24px
 }
 
+.good {
+    border-color: #4CAF50
+}
 
+.meh {
+    border-color: #FFCC33
+}
+
+.bad {
+    border-color: #F3000F
+}
 
 
 /* ----------------- Login */
