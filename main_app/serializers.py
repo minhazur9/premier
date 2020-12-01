@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
-from .models import Profile
+from rest_framework.validators import UniqueValidator
+from .models import *
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -17,7 +18,7 @@ class UserSerializerWithToken(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True,required=True)
     first_name = serializers.CharField(required=True)
     last_name = serializers.CharField(required=True)
-    email = serializers.CharField(required=True)
+    email = serializers.CharField(required=True,validators=[UniqueValidator(queryset=User.objects.all())])
 
 
     def get_token(self, obj):
@@ -49,4 +50,16 @@ class ProfileSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Profile
-        fields = ('id', 'user')
+        fields = ('id','first_name','last_name','user')
+
+class MovieSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Movie
+        fields = ('movieId','title','profile')
+
+class ShowSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Show
+        fields = ('showId','title','profile')

@@ -26,6 +26,15 @@ def profiles(request):
     allProfiles = serializers.serialize('json',allProfiles)
     return HttpResponse(allProfiles)
 
+def movies(request):
+    allMovies = Movie.objects.all()
+    allMovies = serializers.serialize('json',allMovies)
+    return HttpResponse(allMovies)
+
+def shows(request):
+    allShows = Show.objects.all()
+    allShows = serializers.serialize('json',allShows)
+    return HttpResponse(allShows)
 
 class CurrentUser(APIView):
 
@@ -44,7 +53,7 @@ class UserList(APIView):
         if serializer.is_valid():
             serializer.save()
             user = User.objects.get(username=serializer.data['username'])
-            Profile.objects.create(user=user)
+            Profile.objects.create(user=user,first_name=user.first_name,last_name=user.last_name)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

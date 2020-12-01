@@ -35,6 +35,11 @@ class MovieIndex extends React.Component {
         axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`)
             .then((response) => this.setState({movies: response.data.results, loading: false}))
     }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+     }
+     
     render() {
         return (
             <>
