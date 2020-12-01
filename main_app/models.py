@@ -12,3 +12,13 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+class Movie(models.Model):
+    movieId = models.IntegerField()
+    title = models.CharField(max_length=255)
+    profile = models.ManyToManyField(Profile)
+
+class Show(models.Model):
+    showid = models.IntegerField()
+    title = models.CharField(max_length=255)
+    profile = models.ManyToManyField(Profile)
+
