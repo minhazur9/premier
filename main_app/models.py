@@ -18,7 +18,7 @@ class Movie(models.Model):
     user= models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return f'{self.title} from {self.user.first_name}'
 
 class Show(models.Model):
     show_id = models.IntegerField()
@@ -26,5 +26,5 @@ class Show(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return f"{self.title} from {self.user.username}'s list"
 

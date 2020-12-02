@@ -62,4 +62,4 @@ class ShowSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Show
-        fields = ('show_id','title')
+        fields = ('show_id','title','user')

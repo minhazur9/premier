@@ -61,6 +61,7 @@ class ShowDetails extends React.Component {
           axios.post('http://localhost:8000/premier/shows/add', 
           { show_id: 82856, 
             title:"The Mandalorian",
+            user: this.props.user.id
           })
     }
     
