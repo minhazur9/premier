@@ -7,6 +7,7 @@ import ShowDetails from '../pages/shows/ShowDetails';
 import ShowIndex from '../pages/shows/ShowIndex';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
+import ProfileDetails from '../pages/ProfileDetails'
 
 
 const Routes = (props) => {
@@ -30,6 +31,7 @@ const Routes = (props) => {
         <Route path='/shows' component={ShowIndex}/>
         <Route path="/login" render={() => <Login handleLogin={props.handleLogin} redirect={redirect}/>}/>
         <Route path='/signup' component={() => <Signup handleSignup={props.handleSignup} redirect={redirect}/>}/>
+        <Route path='/profiles/:profileId' component={(props) => <ProfileDetails profileId={props.match.params.profileId}/>}/>
     </Switch>
     )
 }

@@ -37,6 +37,11 @@ def shows(request):
     allShows = serializers.serialize('json',allShows)
     return HttpResponse(allShows)
 
+def profile(request,profile_id):
+    profile = Profile.objects.filter(id=profile_id)
+    profile = serializers.serialize('json',profile)
+    return HttpResponse(profile)
+
 class CurrentUser(APIView):
 
     authentication_classes = (JSONWebTokenAuthentication,)
