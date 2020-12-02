@@ -24,7 +24,7 @@ const Routes = (props) => {
     return (
     <Switch>
         <Route exact path='/' component={Home}/>
-        <Route path='/movies/:movieId' component={MovieDetails}/>
+        <Route path='/movies/:movieId' render={(props) => <MovieDetails user={user} loggedIn = {loggedIn} movieId={props.match.params.movieId} />}/>
         <Route path='/movies' component={MovieIndex}/>
         <Route path='/shows/:showId' render={(props) => <ShowDetails user={user} loggedIn = {loggedIn} showId={props.match.params.showId} />}/>
         <Route path='/shows' component={ShowIndex}/>

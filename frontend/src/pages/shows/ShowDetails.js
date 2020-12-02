@@ -59,7 +59,7 @@ class ShowDetails extends React.Component {
             method: 'post',
             url: 'http://localhost:8000/premier/shows/add',
             headers: { 
-              'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6Im1pbiIsImV4cCI6MTYwNzEzMDMwNiwiZW1haWwiOiJtaW5oYXp1cjBAZ21haWwuY29tIiwib3JpZ19pYXQiOjE2MDY1MjU1MDZ9.bIpDcZv889WDDM64ah64v4LnC6zfNrg6PjlLG8AQkCE', 
+              'Authorization': `JWT ${localStorage.getItem('token')}`,
             },
             data : {
                 'show_id': this.state.show.id, 

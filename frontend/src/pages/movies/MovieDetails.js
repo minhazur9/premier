@@ -66,6 +66,9 @@ class MovieDetails extends React.Component {
             <>
                 <div style={{backgroundImage: `url(${imagePath}${this.state.movie.poster_path})`}} className='movie-poster'></div>
                 <div className="details-text">
+                {this.props.loggedIn && 
+                <a onClick={this.handleAddToList} className="add-to-rec waves-effect waves-light btn">Add to List</a>
+                }
                     <h1 className="title">{this.state.movie.title}</h1>
                     <p className='tagline'>{this.state.movie.tagline}</p>
                     <p className="critic-score-header">Average Critic Score</p>
@@ -79,8 +82,27 @@ class MovieDetails extends React.Component {
         )
     }
 
+    handleAddToList = (e) => {
+        e.currentTarget.classList.toggle("added");
+        e.preventDefault();
+        const config = {
+          method: 'post',
+          url: 'http://localhost:8000/premier/movies/add',
+          headers: { 
+            'Authorization': `JWT ${localStorage.getItem('token')}`,
+          },
+          data : {
+              'movie_id': this.state.movie.id, 
+              'title':this.state.movie.title,
+              'user': this.props.user.id
+          }
+        };
+        axios(config)
+        
+  }
+
     componentDidMount() {
-        const movieId = this.props.match.params.movieId
+        const movieId = this.props.movieId
         const key = '47b253083f612b83066bfaf81a01e411'
         console.log(movieId)
         axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}&language=en-US`)
