@@ -1,7 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import DjangoCSRFToken from '../../components/DjangoCSRFToken';
-import {csrftoken} from '../../components/djangotoken';
 
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
@@ -57,12 +55,20 @@ class ShowDetails extends React.Component {
     handleAddToList = (e) => {
           e.currentTarget.classList.toggle("added");
           e.preventDefault();
-          const user = this.props.user;
-          axios.post('http://localhost:8000/premier/shows/add', 
-          { show_id: 82856, 
-            title:"The Mandalorian",
-            user: this.props.user.id
-          })
+          const config = {
+            method: 'post',
+            url: 'http://localhost:8000/premier/shows/add',
+            headers: { 
+              'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6Im1pbiIsImV4cCI6MTYwNzEzMDMwNiwiZW1haWwiOiJtaW5oYXp1cjBAZ21haWwuY29tIiwib3JpZ19pYXQiOjE2MDY1MjU1MDZ9.bIpDcZv889WDDM64ah64v4LnC6zfNrg6PjlLG8AQkCE', 
+            },
+            data : {
+                'show_id': this.state.show.id, 
+                'title':this.state.show.name,
+                'user': this.props.user.id
+            }
+          };
+          axios(config)
+          
     }
     
     // Render All the data of the show

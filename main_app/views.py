@@ -4,10 +4,11 @@ from .serializers import *
 from django.core import serializers
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
-from rest_framework.decorators import api_view, permission_classes, authentication_classes
+from rest_framework.decorators import api_view
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 
 # Create your views here.
@@ -38,7 +39,8 @@ def shows(request):
 
 class CurrentUser(APIView):
 
-    permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = (JSONWebTokenAuthentication,)
+    permissions_classes = (permissions.AllowAny, )
 
     def get(self,request,format=None):
         serializer = UserSerializer(request.user)
@@ -59,7 +61,7 @@ class UserList(APIView):
 
 
 class ShowList(APIView):
-    permission_classes = (permissions.AllowAny,)
+    authentication_classes = (JSONWebTokenAuthentication,)
     def post(self, request, format=None):
         serializer = ShowSerializer(data=request.data)
         if serializer.is_valid():
