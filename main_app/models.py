@@ -13,17 +13,17 @@ class Profile(models.Model):
         return self.user.username
 
 class Movie(models.Model):
-    movieId = models.IntegerField()
+    movie_id = models.IntegerField()
     title = models.CharField(max_length=255)
-    profile = models.ManyToManyField(Profile)
+    user= models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
 
 class Show(models.Model):
-    showid = models.IntegerField()
+    show_id = models.IntegerField()
     title = models.CharField(max_length=255)
-    profile = models.ManyToManyField(Profile)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

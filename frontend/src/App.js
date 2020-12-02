@@ -10,6 +10,7 @@ class App extends React.Component {
   state = {
     loggedIn: localStorage.getItem('token') ? true : false,
     username: '',
+    user: {}
   }
 
   componentDidMount() {
@@ -20,7 +21,7 @@ class App extends React.Component {
         }
       })
         .then((response) => {
-          this.setState({ username: response.data.username });
+          this.setState({ username: response.data.username, user: response.data});
         });
     }
     
@@ -34,7 +35,8 @@ class App extends React.Component {
         localStorage.setItem('token', response.data.token);
         this.setState({
           loggedIn: true,
-          username: response.data.user.username
+          username: response.data.user.username,
+          user: response.data.user
         });
       })
       .catch((error) => {
@@ -57,7 +59,8 @@ class App extends React.Component {
         localStorage.setItem('token', response.data.token);
         this.setState({
           loggedIn: true,
-          username: response.data.username
+          username: response.data.username,
+          user: response.data.user
         });
       });
   };
@@ -65,7 +68,7 @@ class App extends React.Component {
   // Destroy token to logout
   handleLogout = () => {
     localStorage.removeItem('token');
-    this.setState({ loggedIn: false, username: '' });
+    this.setState({ loggedIn: false, username: '', user:{} });
   };
 
   render() {
@@ -73,7 +76,7 @@ class App extends React.Component {
       <div className="app-container">
         <Navbar logOut={this.handleLogout} loggedIn={this.state.loggedIn}/>
         <main>
-        <Routes handleSignup={this.handleSignup} handleLogin={this.handleLogin}/>
+        <Routes user={this.state.user} loggedIn={this.state.loggedIn} handleSignup={this.handleSignup} handleLogin={this.handleLogin}/>
         </main>
         <Footer/>
       </div>

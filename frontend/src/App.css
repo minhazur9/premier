@@ -137,6 +137,31 @@ nav .active {
 }
 /* ----------------- Details */
 
+.add-to-rec {
+    position: absolute;
+    color:#03A9F4;
+    background-color:white;
+    right: -500px;
+    top: -50px;
+
+}
+
+.add-to-rec:hover {
+    background-color:#03A9F4;
+    color: white; 
+}
+
+.add-to-rec:focus {
+    background-color:#03A9F4;
+    color: white; 
+}
+
+.added {
+    background-color:#03A9F4;
+    color: white; 
+    content: "Hide"
+}
+
 .movie-poster {
     position: relative;
     height: 700px;
@@ -149,6 +174,7 @@ nav .active {
 
 .title {
     position: relative;
+    display: block;
     left: 180px;
     color: white;
     min-width: 700px;

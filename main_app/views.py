@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import permissions, status
-from .serializers import ProfileSerializer, UserSerializer, UserSerializerWithToken
+from .serializers import *
 from django.core import serializers
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
@@ -54,6 +54,16 @@ class UserList(APIView):
             serializer.save()
             user = User.objects.get(username=serializer.data['username'])
             Profile.objects.create(user=user,first_name=user.first_name,last_name=user.last_name)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ShowList(APIView):
+    permission_classes = (permissions.AllowAny,)
+    def post(self, request, format=None):
+        serializer = ShowSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

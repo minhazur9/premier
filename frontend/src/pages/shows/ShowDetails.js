@@ -1,14 +1,20 @@
 import React from 'react';
 import axios from 'axios';
+import DjangoCSRFToken from '../../components/DjangoCSRFToken';
+import {csrftoken} from '../../components/djangotoken';
 
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
 
 class ShowDetails extends React.Component {
 
     state = {
         show: {},
         userAverage: '---',
-        loading: true
+        loading: true,
     }
+
+    
 
     // Render Loading Icon
     renderLoadingIcon() {
@@ -29,7 +35,6 @@ class ShowDetails extends React.Component {
         else colorClass = "bad"
         return (
             <div className={`score-container ${colorClass}`}>
-            {Number(criticAverage) >= 8 && console.log(this.className)}
             {criticAverage.length === 1 ? criticAverage + '.0' : criticAverage}
         </div>
         )
@@ -48,6 +53,16 @@ class ShowDetails extends React.Component {
         </div>
         )
     }
+
+    handleAddToList = (e) => {
+          e.currentTarget.classList.toggle("added");
+          e.preventDefault();
+          const user = this.props.user;
+          axios.post('http://localhost:8000/premier/shows/add', 
+          { show_id: 82856, 
+            title:"The Mandalorian",
+          })
+    }
     
     // Render All the data of the show
     renderShowDetails() {
@@ -60,6 +75,10 @@ class ShowDetails extends React.Component {
             <>
                 <div style={{backgroundImage: `url(${imagePath}${this.state.show.poster_path})`}} className='movie-poster'></div>
                 <div className="details-text">
+                <h1>{this.props.loggedIn}</h1>
+                {this.props.loggedIn && 
+                <a onClick={this.handleAddToList} className="add-to-rec waves-effect waves-light btn">Add to List</a>
+                }
                     <h1 className='title'>{this.state.show.name}</h1>
                     <p className='tagline'>{this.state.show.tagline}</p>
                     <p className="critic-score-header">Average Critic Score</p>
@@ -77,7 +96,7 @@ class ShowDetails extends React.Component {
     }
 
     componentDidMount() {
-        const showId = this.props.match.params.showId
+        const showId = this.props.showId
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/tv/${showId}?api_key=${key}&language=en-US`)
         .then((response) => {

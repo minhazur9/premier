@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username',)
+        fields = ('id','username',)
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):
@@ -44,7 +44,7 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('token', 'username', 'password', 'first_name', 'last_name','email')
+        fields = ('id','token', 'username', 'password', 'first_name', 'last_name','email')
 
 class ProfileSerializer(serializers.ModelSerializer):
     
@@ -53,13 +53,13 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = ('id','first_name','last_name','user')
 
 class MovieSerializer(serializers.ModelSerializer):
-
+    
     class Meta:
         model = Movie
-        fields = ('movieId','title','profile')
+        fields = ('movie_id','title','user')
 
 class ShowSerializer(serializers.ModelSerializer):
-
+    
     class Meta:
         model = Show
-        fields = ('showId','title','profile')
+        fields = ('show_id','title')

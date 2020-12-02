@@ -17,12 +17,16 @@ const Routes = (props) => {
         history.push("/");
     }
 
+    const loggedIn = props.loggedIn;
+
+    const user = props.user;
+
     return (
     <Switch>
         <Route exact path='/' component={Home}/>
         <Route path='/movies/:movieId' component={MovieDetails}/>
         <Route path='/movies' component={MovieIndex}/>
-        <Route path='/shows/:showId' component={ShowDetails}/>
+        <Route path='/shows/:showId' render={(props) => <ShowDetails user={user} loggedIn = {loggedIn} showId={props.match.params.showId} />}/>
         <Route path='/shows' component={ShowIndex}/>
         <Route path="/login" render={() => <Login handleLogin={props.handleLogin} redirect={redirect}/>}/>
         <Route path='/signup' component={() => <Signup handleSignup={props.handleSignup} redirect={redirect}/>}/>
