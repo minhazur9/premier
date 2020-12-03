@@ -48,8 +48,6 @@ class MovieIndex extends React.Component {
                 <ul className="movie-list">
                 {this.state.loading ? this.renderLoadingIcon() : this.renderMovieCards() }
                 </ul>
-                
-            
             </>
         )
     }

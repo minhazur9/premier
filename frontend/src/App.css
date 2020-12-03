@@ -413,4 +413,46 @@ label .active {
       height: 32px;
     }
   }
+
+  /* Profile Page */
+
+  .profile-pic {
+      position: relative;
+      left: 120px;
+      height: 350px;
+      width: 350px;
+      border: solid 2px black
+  }
+
+  .full-name {
+      position: relative;
+      left: 530px;
+      top: 50px;
+  }
+
+  .movie-recs {
+    position: relative;
+    width: 487px;
+    height: 245px;
+    left: 1168px;
+    bottom: 373px;
+    border: solid 2px black;
+    overflow-y: auto;
+  }
+
+  .movie-recs-header {
+    position: relative;
+    left: 1333px;
+    bottom: 390px;
+  }
+
+  .rec-link {
+      position: relative;
+      font-size: 25px;
+      
+  }
+
+  .recs {
+    border-bottom: black 2px solid;
+  }
   

@@ -1,10 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 
+import ProfilePic from '../components/profile/ProfilePic'
+import MovieRecs from '../components/profile/MovieRecs'
+
 class ProfileDetails extends React.Component {
 
     state = {
-        profile: {}
+        profile: {},
     }
 
     componentDidMount() {
@@ -15,7 +18,12 @@ class ProfileDetails extends React.Component {
 
     render() {
         return (
-            <h1>{this.state.profile.first_name} {this.state.profile.last_name}</h1>
+            <>
+            <h3 className="full-name">{this.state.profile.first_name} {this.state.profile.last_name}</h3>
+            <ProfilePic />
+            <h3 className="movie-recs-header">Movies</h3>
+            <MovieRecs profileId={this.props.profileId}/>
+            </>
         )
     }
 }

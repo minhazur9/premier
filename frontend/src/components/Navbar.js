@@ -12,7 +12,8 @@ function Navbar(props) {
       </ul>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
       {props.loggedIn 
-          ? <li><Link to="#" onClick={props.logOut} className='link' >Logout</Link></li>
+          ? <><li><Link to={`/profiles/${props.userId-1}`} className="link">My Account</Link></li>
+          <li><Link to="#" onClick={props.logOut} className='link' >Logout</Link></li></>
           :  <><li><NavLink to="/signup" className='link' >Signup</NavLink></li>
               <li><NavLink to="/login" className='link'>Login</NavLink></li></>
       }

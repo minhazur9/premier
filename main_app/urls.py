@@ -9,5 +9,7 @@ urlpatterns = [
     path('shows/', views.shows, name='all_shows'),
     path('shows/add', views.ShowList.as_view(), name='add_show'),
     path('movies/add', views.MovieList.as_view(), name="add_movie"),
-    path('profiles/<int:profile_id>', views.profile, name="profile")
+    path('profiles/<int:user_id>/movies/', views.movieRecs, name="find_movies"),
+    path('profiles/<int:profile_id>/', views.profile, name="profile"),
+    
 ]

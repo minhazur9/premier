@@ -42,6 +42,11 @@ def profile(request,profile_id):
     profile = serializers.serialize('json',profile)
     return HttpResponse(profile)
 
+def movieRecs(request,user_id):
+    movies = Movie.objects.filter(user=user_id)
+    movies = serializers.serialize('json',movies)
+    return HttpResponse(movies)
+
 class CurrentUser(APIView):
 
     authentication_classes = (JSONWebTokenAuthentication,)
