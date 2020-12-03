@@ -16,7 +16,7 @@ class MovieRecs extends React.Component {
     renderMovies() {
         return this.state.movies.map((movie) => {
             return(
-                <li className="recs"><Link className="rec-link" to={`/movies/${movie.fields.movie_id}`}><p>{movie.fields.title}</p></Link></li>
+                <li className="recs"><Link className="rec-link" to={`/movies/${movie.movie_id}`}><p>{movie.title}</p></Link></li>
             )
             
         })

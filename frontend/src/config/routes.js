@@ -24,11 +24,13 @@ const Routes = (props) => {
 
     const shows = props.showArray;
 
+    const movies = props.movieArray;
+
 
     return (
     <Switch>
         <Route exact path='/' component={Home}/>
-        <Route path='/movies/:movieId' render={(props) => <MovieDetails shows={shows} user={user} loggedIn = {loggedIn} movieId={props.match.params.movieId} />}/>
+        <Route path='/movies/:movieId' render={(props) => <MovieDetails movies={movies} user={user} loggedIn = {loggedIn} movieId={props.match.params.movieId} />}/>
         <Route path='/movies' component={MovieIndex}/>
         <Route path='/shows/:showId' render={(props) => <ShowDetails shows={shows} user={user} loggedIn = {loggedIn} showId={props.match.params.showId} />}/>
         <Route path='/shows' component={ShowIndex}/>

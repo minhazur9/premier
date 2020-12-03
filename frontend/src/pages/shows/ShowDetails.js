@@ -111,7 +111,6 @@ class ShowDetails extends React.Component {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/tv/${showId}?api_key=${key}&language=en-US`)
         .then((response) => {
-            console.log(response.data)
             this.setState({show:response.data, loading:false})
         })
         for(let i = 0; i < this.props.shows.length; i++) {

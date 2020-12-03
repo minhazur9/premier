@@ -86,7 +86,7 @@ class App extends React.Component {
       <div className="app-container">
         <Navbar userId={this.state.userId} logOut={this.handleLogout} loggedIn={this.state.loggedIn}/>
         <main>
-        <Routes showArray={this.state.showArray} user={this.state.user} loggedIn={this.state.loggedIn} handleSignup={this.handleSignup} handleLogin={this.handleLogin}/>
+        <Routes movieArray={this.state.movieArray} showArray={this.state.showArray} user={this.state.user} loggedIn={this.state.loggedIn} handleSignup={this.handleSignup} handleLogin={this.handleLogin}/>
         </main>
         <Footer/>
       </div>

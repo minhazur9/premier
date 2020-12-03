@@ -8,7 +8,8 @@ class MovieDetails extends React.Component {
         movie: {},
         userAverage: '---',
         companyList: [],
-        loading: true
+        loading: true,
+        clicked: false
     }
 
     // Render Loading Icon
@@ -66,8 +67,10 @@ class MovieDetails extends React.Component {
             <>
                 <div style={{backgroundImage: `url(${imagePath}${this.state.movie.poster_path})`}} className='movie-poster'></div>
                 <div className="details-text">
-                {this.props.loggedIn && 
-                <a onClick={this.handleAddToList} className="add-to-rec waves-effect waves-light btn">Add to List</a>
+                {this.props.loggedIn && !this.state.clicked &&
+                <a onClick={this.handleAddToList} className="add-to-rec waves-effect waves-light btn">Add to List</a> ||
+                this.props.loggedIn && this.state.clicked  &&
+                <a onClick={(e) => e.preventDefault()} className="add-to-rec waves-effect waves-light btn added">Added</a>
                 }
                     <h1 className="title">{this.state.movie.title}</h1>
                     <p className='tagline'>{this.state.movie.tagline}</p>
@@ -98,6 +101,7 @@ class MovieDetails extends React.Component {
           }
         };
         axios(config)
+        this.setState({clicked:true})
         
   }
 
@@ -107,9 +111,14 @@ class MovieDetails extends React.Component {
         console.log(movieId)
         axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}&language=en-US`)
         .then((response) => {
-            console.log(response.data)
             this.setState({movie:response.data, companyList:response.data.production_companies, loading:false})
         })
+        for(let i = 0; i < this.props.movies.length; i++) {
+            if(this.props.movies[i].movie_id == this.props.movieId) {
+                this.setState({clicked:true})
+                return;
+            }
+        }
     }
     
     render() {
