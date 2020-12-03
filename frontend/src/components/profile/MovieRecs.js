@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 class MovieRecs extends React.Component {
     state = {
         movies: [],
-        refresh: false,
     }
 
     handleDelete = (e) => {
@@ -18,11 +17,7 @@ class MovieRecs extends React.Component {
             headers: { 
               'Authorization': `JWT ${localStorage.getItem('token')}`,
             },
-            data : {
-                
-            }
           };
-          const refresh = this.state.refresh;
           axios(config)
           window.location.reload()
     }
