@@ -33,7 +33,9 @@ class ShowRecs extends React.Component {
         return this.state.shows.map((show) => {
             return(
                 <li id={show.show_id }className="recs"><Link key={show.show_id}className="rec-link" to={`/shows/${show.show_id}`}><p>{show.title}</p></Link>
+                {this.props.userId-1 == this.props.profileId &&
                 <a onClick={this.handleDelete} className="delete-from-rec waves-effect waves-light btn">Delete</a>
+                }
                 </li>
             )
             

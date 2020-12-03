@@ -22,6 +22,8 @@ const Routes = (props) => {
 
     const user = props.user;
 
+    const userId = props.userId
+
     const shows = props.showArray;
 
     const movies = props.movieArray;
@@ -36,7 +38,7 @@ const Routes = (props) => {
         <Route path='/shows' component={ShowIndex}/>
         <Route path="/login" render={() => <Login handleLogin={props.handleLogin} redirect={redirect}/>}/>
         <Route path='/signup' render={() => <Signup handleSignup={props.handleSignup} redirect={redirect}/>}/>
-        <Route path='/profiles/:profileId' component={(props) => <ProfileDetails user={user} loggedIn = {loggedIn} profileId={props.match.params.profileId}/>}/>
+        <Route path='/profiles/:profileId' component={(props) => <ProfileDetails userId={userId} loggedIn = {loggedIn} profileId={props.match.params.profileId}/>}/>
     </Switch>
     )
 }

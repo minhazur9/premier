@@ -17,15 +17,18 @@ class ProfileDetails extends React.Component {
             .then((response) => this.setState({profile:response.data[0].fields}))
     }
 
+
     render() {
+        const userId = this.props.userId
+        console.log(userId)
         return (
             <div className="profile-details">
             <h3 className="full-name">{this.state.profile.first_name} {this.state.profile.last_name}</h3>
             <ProfilePic />
             <h3 className="movie-recs-header">Movies</h3>
-            <MovieRecs profileId={this.props.profileId}/>
+            <MovieRecs userId={userId} profileId={this.props.profileId}/>
             <h3 className="show-recs-header">Shows</h3>
-            <ShowRecs profileId={this.props.profileId}/>
+            <ShowRecs userId={userId} profileId={this.props.profileId}/>
             </div>
         )
     }
