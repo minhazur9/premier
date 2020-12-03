@@ -45,7 +45,9 @@ def profile(request,profile_id):
 
 def movieRecs(request,user_id):
     movies = Movie.objects.filter(user=user_id)
-    movies = serializers.serialize('json',movies)
+    movies = serializers.serialize('python',movies)
+    movies = [d['fields'] for d in movies]
+    movies = json.dumps(movies)
     return HttpResponse(movies)
 
 def showRecs(request,user_id):
