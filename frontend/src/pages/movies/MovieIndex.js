@@ -68,9 +68,9 @@ class MovieIndex extends React.Component {
                 <ul className="movie-list">
                 {this.state.loading ? this.renderLoadingIcon() : this.renderMovieCards() }
                 {this.state.page < 70 &&
-                <Link to="#" onClick={this.handleNextMoviePage}><i class="fas fa-arrow-circle-right fa-4x"></i></Link> }
+                <Link to="#" onClick={this.handleNextMoviePage}><i className="fas fa-arrow-circle-right fa-4x"></i></Link> }
                 {this.state.page > 1 &&
-                <Link to="#" onClick={this.handlePrevMoviePage}><i class="fas fa-arrow-circle-left fa-4x"></i></Link> }
+                <Link to="#" onClick={this.handlePrevMoviePage}><i className="fas fa-arrow-circle-left fa-4x"></i></Link> }
                 </ul>
             </>
         )

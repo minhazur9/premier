@@ -61,9 +61,9 @@ class ShowIndex extends React.Component {
         <ul className="movie-list">
             {this.state.loading ? this.renderLoadingIcon() : this.renderShowCards()}
             {this.state.page < 500 &&
-            <Link to="#" onClick={this.handleNextShowPage}><i class="fas fa-arrow-circle-right fa-4x"></i></Link> }
+            <Link to="#" onClick={this.handleNextShowPage}><i className="fas fa-arrow-circle-right fa-4x"></i></Link> }
             {this.state.page > 1 &&
-            <Link to="#" onClick={this.handlePrevShowPage}><i class="fas fa-arrow-circle-left fa-4x"></i></Link> }
+            <Link to="#" onClick={this.handlePrevShowPage}><i className="fas fa-arrow-circle-left fa-4x"></i></Link> }
     </ul>
         </>
         )

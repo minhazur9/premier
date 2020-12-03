@@ -9,7 +9,8 @@ class MovieDetails extends React.Component {
         userAverage: '---',
         companyList: [],
         loading: true,
-        clicked: false
+        clicked: false,
+        genreList: [],
     }
 
     // Render Loading Icon
@@ -58,6 +59,20 @@ class MovieDetails extends React.Component {
         )
     }
 
+    renderDate() {
+        const months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec']
+        const releaseDate = new Date(this.state.movie.release_date)
+        return (
+            <p className="movie-release">Release: {`${months[releaseDate.getMonth()]} ${releaseDate.getDate()} ${releaseDate.getFullYear()}`}</p>
+        )
+    }
+
+    renderGenres() {
+        return this.state.genreList.slice(0,3).map((genre) => (
+            <li className="genre-name">{genre.name}</li>
+        ))
+    }
+
     // Render all the info about the movie
     renderMovieDetails() {
         const criticAverage = Number(this.state.movie.vote_average).toString();
@@ -80,6 +95,10 @@ class MovieDetails extends React.Component {
                     {this.renderUserRating(this.state.userAverage)}
                     <p className="run-time">Runtime: {this.state.movie.runtime} Minutes</p>
                     <ul className="production">{this.renderProductionCompanies()}</ul>
+                    {this.renderDate()}
+                    <ul className="genres">{this.renderGenres()}</ul>
+                    <p className="overview-header">Overview</p>
+                    <p className="overview">{this.state.movie.overview}</p>
                 </div>
             </>
         )
@@ -111,7 +130,11 @@ class MovieDetails extends React.Component {
         console.log(movieId)
         axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}&language=en-US`)
         .then((response) => {
-            this.setState({movie:response.data, companyList:response.data.production_companies, loading:false})
+            console.log(response.data)
+            this.setState({movie:response.data, 
+                          companyList:response.data.production_companies, 
+                          genreList:response.data.genres, 
+                          loading:false})
         })
         for(let i = 0; i < this.props.movies.length; i++) {
             if(this.props.movies[i].movie_id == this.props.movieId) {

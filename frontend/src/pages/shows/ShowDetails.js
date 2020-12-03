@@ -71,13 +71,23 @@ class ShowDetails extends React.Component {
           this.setState({clicked:true})
           
     }
+
+    renderDates() {
+        const months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec']
+        const releaseDate = new Date(this.state.show.first_air_date)
+        const lastDate = new Date(this.state.show.last_air_date)
+        return (
+            <p className="dates">{`${months[releaseDate.getMonth()]} ${releaseDate.getDate()} ${releaseDate.getFullYear()} -
+                                         ${months[lastDate.getMonth()]} ${lastDate.getDate()} ${lastDate.getFullYear()}`}
+                    </p>
+        )
+    }
     
     // Render All the data of the show
     renderShowDetails() {
-        const months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec']
+        
         const criticAverage = Number(this.state.show.vote_average).toString();
-        const releaseDate = new Date(this.state.show.first_air_date)
-        const lastDate = new Date(this.state.show.last_air_date)
+        
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return (
             <>
@@ -98,9 +108,7 @@ class ShowDetails extends React.Component {
                     {this.renderUserRating(this.state.userAverage)}
                     <p className="episode-count">{this.state.show.number_of_episodes} Episodes</p>
                     <p className="season-count">{this.state.show.number_of_seasons} Seasons</p>
-                    <p className="dates">{`${months[releaseDate.getMonth()]} ${releaseDate.getDate()} ${releaseDate.getFullYear()} -
-                                         ${months[lastDate.getMonth()]} ${lastDate.getDate()} ${lastDate.getFullYear()}`}
-                    </p>
+                    {this.renderDates()}
                 </div>
                 </>
         )
