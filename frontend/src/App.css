@@ -165,6 +165,16 @@ nav .active {
 
 }
 
+.delete-from-rec {
+    background-color:#FF0000;
+    color:white;
+}
+
+.delete-from-rec:hover {
+    background-color: white;
+    color: red;
+}
+
 .add-to-rec:hover {
     background-color:#03A9F4;
     color: white; 

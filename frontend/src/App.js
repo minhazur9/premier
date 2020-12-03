@@ -15,7 +15,7 @@ class App extends React.Component {
     showArray: [],
     movieArray: []
   }
-
+  
   componentDidMount() {
     if (this.state.loggedIn) {
       axios.get('http://localhost:8000/premier/current_user/', {
@@ -33,6 +33,7 @@ class App extends React.Component {
       
     }
   }
+  
 
   // Get token from login
   handleLogin = (e,data) => {

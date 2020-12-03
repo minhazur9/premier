@@ -4,8 +4,30 @@ import {Link} from 'react-router-dom'
 
 class MovieRecs extends React.Component {
     state = {
-        movies: []
+        movies: [],
+        refresh: false,
     }
+
+    handleDelete = (e) => {
+        const userId = Number(this.props.profileId)+1
+        const movieId = e.currentTarget.parentNode.id
+
+        const config = {
+            method: 'get',
+            url: `http://localhost:8000/premier/profiles/${userId}/movies/${movieId}/delete`,
+            headers: { 
+              'Authorization': `JWT ${localStorage.getItem('token')}`,
+            },
+            data : {
+                
+            }
+          };
+          const refresh = this.state.refresh;
+          axios(config)
+          window.location.reload()
+    }
+
+    
 
     componentDidMount() {
         const userId = Number(this.props.profileId)+1
@@ -16,7 +38,9 @@ class MovieRecs extends React.Component {
     renderMovies() {
         return this.state.movies.map((movie) => {
             return(
-                <li className="recs"><Link className="rec-link" to={`/movies/${movie.movie_id}`}><p>{movie.title}</p></Link></li>
+                <li id={movie.movie_id} className="recs"><Link key={movie.movie_id} className="rec-link" to={`/movies/${movie.movie_id}`}><p>{movie.title}</p></Link>
+                <a onClick={this.handleDelete} className="delete-from-rec waves-effect waves-light btn">Delete</a>
+                </li>
             )
             
         })
