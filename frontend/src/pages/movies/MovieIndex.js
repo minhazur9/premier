@@ -13,7 +13,7 @@ class MovieIndex extends React.Component {
         page: 1
     } 
 
-    handlePrevPage = (e) => {
+    handlePrevMoviePage = () => {
         const key = '47b253083f612b83066bfaf81a01e411'
         const pageNum = this.state.page - 1;
         this.setState({page:pageNum})
@@ -21,7 +21,7 @@ class MovieIndex extends React.Component {
             .then((response) => this.setState({movies: response.data.results, loading: false}))
     }
 
-    handleNextPage = (e) => {
+    handleNextMoviePage = () => {
         const key = '47b253083f612b83066bfaf81a01e411'
         const pageNum = this.state.page + 1;
         this.setState({page:pageNum})
@@ -68,9 +68,9 @@ class MovieIndex extends React.Component {
                 <ul className="movie-list">
                 {this.state.loading ? this.renderLoadingIcon() : this.renderMovieCards() }
                 {this.state.page < 70 &&
-                <Link to="/movies" onClick={this.handleNextPage}><i class="fas fa-arrow-circle-right fa-4x"></i></Link> }
+                <Link to="#" onClick={this.handleNextMoviePage}><i class="fas fa-arrow-circle-right fa-4x"></i></Link> }
                 {this.state.page > 1 &&
-                <Link to="/movies" onClick={this.handlePrevPage}><i class="fas fa-arrow-circle-left fa-4x"></i></Link> }
+                <Link to="#" onClick={this.handlePrevMoviePage}><i class="fas fa-arrow-circle-left fa-4x"></i></Link> }
                 </ul>
             </>
         )
