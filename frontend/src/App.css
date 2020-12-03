@@ -13,7 +13,7 @@
 
   main {
     flex: 1 0 auto;
-    max-height: 250vh;
+    max-height: 270vh;
   }
 
 /* ----------------- Links */
@@ -175,7 +175,7 @@ nav .active {
 .title {
     position: relative;
     display: block;
-    left: 180px;
+    left: 47px;
     color: white;
     min-width: 700px;
     text-align: center;
@@ -196,7 +196,7 @@ nav .active {
     color: white;
     font-size: 20px;
     text-align: center;
-    left: 187px;
+    left: 48px;
     bottom:5px;
     min-width: 700px;
 }
@@ -250,7 +250,7 @@ nav .active {
     position: relative;
     font-size: 20px;
     color: white;
-    left: 455px;
+    left: 395px;
     top: 12px;
 }
 
@@ -258,7 +258,7 @@ nav .active {
     position: relative;
     font-size: 20px;
     color: white;
-    left: 775px;
+    left: 660px;
     bottom: 17px;
 }
 
@@ -266,14 +266,11 @@ nav .active {
     position: relative;
     font-size: 20px;
     color: white;
-    left: 445px;
+    left: 355px;
     top: 16px;
 }
 
 .production {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     position: relative;
     left: 603px;
     bottom: 49px;
