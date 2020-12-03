@@ -5,6 +5,10 @@
     font-family: 'Nunito', sans-serif;
 }
 
+body {
+    overflow-x:hidden;
+}
+
 .app-container {
     display: flex;
     min-height: 100vh;
@@ -84,6 +88,21 @@ nav .active {
     width: 200px;
 }
 
+.fa, .fas {
+    position: relative;
+    color: #00597F
+}
+
+.fa-arrow-circle-right {
+    bottom: 70px;
+    left: 1000px;
+}
+
+.fa-arrow-circle-left {
+    bottom: 70px;
+    right: 280px;
+}
+
 
 @keyframes select {
     0% {
@@ -141,7 +160,7 @@ nav .active {
     position: absolute;
     color:#03A9F4;
     background-color:white;
-    right: -500px;
+    right: -337px;
     top: -50px;
 
 }
@@ -431,22 +450,22 @@ label .active {
     position: relative;
     width: 487px;
     height: 245px;
-    left: 1168px;
-    bottom: 373px;
+    left: 1000px;
+    bottom: 403px;
     border: solid 2px black;
     overflow-y: auto;
   }
 
   .movie-recs-header {
     position: relative;
-    left: 1333px;
-    bottom: 390px;
+    left: 1167px;
+    bottom: 420px;
   }
 
   .show-recs-header {
     position: relative;
-    left: 1333px;
-    bottom: 390px;
+    left: 1167px;
+    bottom: 420px;
     margin-top: 50px;
   }
 
