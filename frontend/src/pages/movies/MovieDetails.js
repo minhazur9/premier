@@ -11,6 +11,7 @@ class MovieDetails extends React.Component {
         loading: true,
         clicked: false,
         genreList: [],
+        trailerLink: ''
     }
 
     // Render Loading Icon
@@ -73,6 +74,17 @@ class MovieDetails extends React.Component {
         ))
     }
 
+    renderTrailer() {
+        const movieId = this.props.movieId
+        const videoPath = 'https://www.youtube.com/watch?v='
+        const key = '47b253083f612b83066bfaf81a01e411'
+        axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${key}&language=en-US`)
+        .then((response) => {
+            const videoKey = response.data.results[0].key
+            this.setState({trailerLink:videoPath+videoKey})
+        })
+    }
+
     // Render all the info about the movie
     renderMovieDetails() {
         const criticAverage = Number(this.state.movie.vote_average).toString();
@@ -99,8 +111,27 @@ class MovieDetails extends React.Component {
                     <ul className="genres">{this.renderGenres()}</ul>
                     <p className="overview-header">Overview</p>
                     <p className="overview">{this.state.movie.overview}</p>
+                    {this.renderVideoModal()}
                 </div>
             </>
+        )
+    }
+
+    renderVideoModal() {
+        return (
+            <>
+    
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+  </>
         )
     }
 
@@ -136,6 +167,7 @@ class MovieDetails extends React.Component {
                           genreList:response.data.genres, 
                           loading:false})
         })
+        this.renderTrailer()
         for(let i = 0; i < this.props.movies.length; i++) {
             if(this.props.movies[i].movie_id == this.props.movieId) {
                 this.setState({clicked:true})
