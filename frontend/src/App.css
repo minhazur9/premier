@@ -453,14 +453,19 @@ label .active {
     margin-top: 50px;
   }
 
-
   .rec-link {
       position: relative;
       font-size: 25px;
+      color: black;
       
   }
 
   .recs {
     border-bottom: black 2px solid;
+    padding: 10px;
+  }
+
+  .profile-details {
+      max-height: 100vh;
   }
   

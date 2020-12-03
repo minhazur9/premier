@@ -14,9 +14,9 @@ class ShowRecs extends React.Component {
     }
 
     rendershows() {
-        return this.state.shows.map((movie) => {
+        return this.state.shows.map((show) => {
             return(
-                <li className="recs"><Link className="rec-link" to={`/shows/${movie.fields.movie_id}`}><p>{movie.fields.title}</p></Link></li>
+                <li className="recs"><Link className="rec-link" to={`/shows/${show.fields.show_id}`}><p>{show.fields.title}</p></Link></li>
             )
             
         })
