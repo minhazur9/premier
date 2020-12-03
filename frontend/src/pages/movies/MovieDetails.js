@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-
+import ReactDOM from "react-dom";
+import VideoModal from '../../components/VideoModal';
 
 class MovieDetails extends React.Component {
 
@@ -76,13 +77,14 @@ class MovieDetails extends React.Component {
 
     renderTrailer() {
         const movieId = this.props.movieId
-        const videoPath = 'https://www.youtube.com/watch?v='
+        const videoPath = 'https://www.youtube.com/embed/'
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${key}&language=en-US`)
         .then((response) => {
             const videoKey = response.data.results[0].key
             this.setState({trailerLink:videoPath+videoKey})
         })
+        
     }
 
     // Render all the info about the movie
@@ -111,27 +113,9 @@ class MovieDetails extends React.Component {
                     <ul className="genres">{this.renderGenres()}</ul>
                     <p className="overview-header">Overview</p>
                     <p className="overview">{this.state.movie.overview}</p>
-                    {this.renderVideoModal()}
+                    <VideoModal trailerLink={this.state.trailerLink} />
                 </div>
             </>
-        )
-    }
-
-    renderVideoModal() {
-        return (
-            <>
-    
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-  </>
         )
     }
 
@@ -174,6 +158,7 @@ class MovieDetails extends React.Component {
                 return;
             }
         }
+        
     }
     
     render() {
