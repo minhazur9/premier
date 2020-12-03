@@ -60,6 +60,10 @@ def showRecs(request,user_id):
 def deleteMovieRecs(request,user_id,movie_id):
     movies = Movie.objects.filter(user=user_id).filter(movie_id=movie_id).delete()
     return HttpResponse(movies)
+
+def deleteShowRecs(request,user_id,show_id):
+    shows = Show.objects.filter(user=user_id).filter(show_id=show_id).delete()
+    return HttpResponse(shows)
     
 
 class CurrentUser(APIView):
