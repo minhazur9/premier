@@ -66,11 +66,12 @@ class App extends React.Component {
     })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
+        const userId = response.data.id;
         this.setState({
           loggedIn: true,
           username: response.data.username,
           user: response.data.user,
-          userId: response.data.user.id
+          userId: userId
         });
       });
   };

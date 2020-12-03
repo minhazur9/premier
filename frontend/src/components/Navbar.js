@@ -11,7 +11,7 @@ function Navbar(props) {
         <li><NavLink to="/shows" className='link'>TV Shows</NavLink></li>
       </ul>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
-      {props.loggedIn 
+      {props.loggedIn
           ? <><li><NavLink to={`/profiles/${props.userId-1}`} className="link">My Account</NavLink></li>
           <li><Link to="#" onClick={props.logOut} className='link' >Logout</Link></li></>
           :  <><li><NavLink to="/signup" className='link' >Signup</NavLink></li>
