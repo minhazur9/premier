@@ -23,6 +23,7 @@ class ProfileDetails extends React.Component {
             <ProfilePic />
             <h3 className="movie-recs-header">Movies</h3>
             <MovieRecs profileId={this.props.profileId}/>
+            <h3 className="show-recs-header">Shows</h3>
             </>
         )
     }

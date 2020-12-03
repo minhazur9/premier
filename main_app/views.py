@@ -47,6 +47,11 @@ def movieRecs(request,user_id):
     movies = serializers.serialize('json',movies)
     return HttpResponse(movies)
 
+def showRecs(request,user_id):
+    shows = Show.objects.filter(user=user_id)
+    shows = serializers.serialize('json',shows)
+    return HttpResponse(shows)
+
 class CurrentUser(APIView):
 
     authentication_classes = (JSONWebTokenAuthentication,)

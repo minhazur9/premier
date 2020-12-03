@@ -446,6 +446,14 @@ label .active {
     bottom: 390px;
   }
 
+  .show-recs-header {
+    position: relative;
+    left: 1333px;
+    bottom: 390px;
+    margin-top: 50px;
+  }
+
+
   .rec-link {
       position: relative;
       font-size: 25px;
