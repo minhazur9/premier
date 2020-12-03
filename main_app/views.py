@@ -57,6 +57,11 @@ def showRecs(request,user_id):
     shows = json.dumps(shows)
     return HttpResponse(shows)
 
+def deleteMovieRecs(request,user_id,movie_id):
+    movies = Movie.objects.filter(user=user_id).filter(movie_id=movie_id).delete()
+    return HttpResponse(movies)
+    
+
 class CurrentUser(APIView):
 
     authentication_classes = (JSONWebTokenAuthentication,)
@@ -82,12 +87,14 @@ class UserList(APIView):
 
 class ShowList(APIView):
     authentication_classes = (JSONWebTokenAuthentication,)
+    
     def post(self, request, format=None):
         serializer = ShowSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class MovieList(APIView):
     authentication_classes = (JSONWebTokenAuthentication,)
