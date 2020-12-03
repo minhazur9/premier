@@ -11,7 +11,8 @@ class App extends React.Component {
     loggedIn: localStorage.getItem('token') ? true : false,
     username: '',
     user: {},
-    userId: ''
+    userId: '',
+    showArray: []
   }
 
   componentDidMount() {
@@ -22,10 +23,12 @@ class App extends React.Component {
         }
       })
         .then((response) => {
-          this.setState({ username: response.data.username, user: response.data, userId: response.data.id});
-        });
+          this.setState({ username: response.data.username, user: response.data, userId: response.data.id})
+          axios.get(`http://localhost:8000/premier/profiles/${this.state.userId}/shows/`)
+          .then((response) => this.setState({showArray:response.data}))
+        })
+      
     }
-    
   }
 
   // Get token from login
@@ -80,7 +83,7 @@ class App extends React.Component {
       <div className="app-container">
         <Navbar userId={this.state.userId} logOut={this.handleLogout} loggedIn={this.state.loggedIn}/>
         <main>
-        <Routes user={this.state.user} loggedIn={this.state.loggedIn} handleSignup={this.handleSignup} handleLogin={this.handleLogin}/>
+        <Routes showArray={this.state.showArray} user={this.state.user} loggedIn={this.state.loggedIn} handleSignup={this.handleSignup} handleLogin={this.handleLogin}/>
         </main>
         <Footer/>
       </div>

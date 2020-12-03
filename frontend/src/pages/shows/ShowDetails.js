@@ -10,9 +10,8 @@ class ShowDetails extends React.Component {
         show: {},
         userAverage: '---',
         loading: true,
+        clicked:false
     }
-
-    
 
     // Render Loading Icon
     renderLoadingIcon() {
@@ -37,6 +36,7 @@ class ShowDetails extends React.Component {
         </div>
         )
     }
+
 
     renderUserRating(userAverage) {
         let colorClass = ""
@@ -68,6 +68,7 @@ class ShowDetails extends React.Component {
             }
           };
           axios(config)
+          this.setState({clicked:true})
           
     }
     
@@ -83,9 +84,12 @@ class ShowDetails extends React.Component {
                 <div style={{backgroundImage: `url(${imagePath}${this.state.show.poster_path})`}} className='movie-poster'></div>
                 <div className="details-text">
                 <h1>{this.props.loggedIn}</h1>
-                {this.props.loggedIn && 
-                <a onClick={this.handleAddToList} className="add-to-rec waves-effect waves-light btn">Add to List</a>
+                {this.props.loggedIn && !this.state.clicked &&
+                <a onClick={this.handleAddToList} className="add-to-rec waves-effect waves-light btn">Add to List</a> ||
+                this.props.loggedIn && this.state.clicked  &&
+                <a onClick={(e) => e.preventDefault()} className="add-to-rec waves-effect waves-light btn added">Added</a>
                 }
+                
                     <h1 className='title'>{this.state.show.name}</h1>
                     <p className='tagline'>{this.state.show.tagline}</p>
                     <p className="critic-score-header">Average Critic Score</p>
@@ -110,6 +114,12 @@ class ShowDetails extends React.Component {
             console.log(response.data)
             this.setState({show:response.data, loading:false})
         })
+        for(let i = 0; i < this.props.shows.length; i++) {
+            if(this.props.shows[i].show_id == this.props.showId) {
+                this.setState({clicked:true})
+                return;
+            }
+        }
     }
     
     render() {

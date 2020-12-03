@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+import json
 
 
 # Create your views here.
@@ -49,7 +50,9 @@ def movieRecs(request,user_id):
 
 def showRecs(request,user_id):
     shows = Show.objects.filter(user=user_id)
-    shows = serializers.serialize('json',shows)
+    shows = serializers.serialize('python',shows)
+    shows = [d['fields'] for d in shows]
+    shows = json.dumps(shows)
     return HttpResponse(shows)
 
 class CurrentUser(APIView):
