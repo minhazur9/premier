@@ -36,6 +36,18 @@ nav .active {
 /* ----------------- Movies Page */
 
 
+.good-card-score {
+    color:#4CAF50
+}
+
+.meh-card-score {
+    color:#FFCC33
+}
+
+.bad-card-score {
+    color: #F3000F
+}
+
 .movie-list {
     display:grid;
     position: relative;
@@ -128,14 +140,14 @@ nav .active {
         height: 0;
     }
     100% {
-        height: 50px;
+        height: 100px;
         opacity: 100;
     }
 }
 
 @keyframes slideDown {
     0% {
-        height: 50px;
+        height: 100px;
         opacity: 100;
     }
     100% {

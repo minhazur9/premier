@@ -44,7 +44,7 @@ class MovieIndex extends React.Component {
         return this.state.movies.map((movie) => {
             return (
                 <>
-                <MovieCard key={movie.id} id={movie.id} title={movie.title} image={`${imagePath}${movie.poster_path}`}/>   
+                <MovieCard key={movie.id} id={movie.id} voteAverage={movie.vote_average} title={movie.title} image={`${imagePath}${movie.poster_path}`}/>   
                 </>
             )     
         })
