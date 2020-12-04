@@ -12,9 +12,13 @@ class VideoModal extends Component {
         
       },
       onCloseStart: () => {
-        
       },
       onCloseEnd: () => {
+        const iframe = document.querySelector('iframe')
+        if (iframe) {
+          const src = iframe.getAttribute('src')
+          document.querySelector('iframe').setAttribute('src',src)
+        }
         
       },
       inDuration: 250,

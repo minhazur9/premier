@@ -172,6 +172,7 @@ nav .active {
     position: absolute;
     color: white;
     font-size: 20px;
+    
 }
 
 
@@ -182,6 +183,8 @@ nav .active {
     position: absolute;
     color: white;
     width: 800px;
+    min-height: 50px;
+    max-height: 300px;
 }
 
 .movie-release {
@@ -348,7 +351,7 @@ nav .active {
 .genres {
     top: 50%;
     font-size: 20px;
-    position: relative;
+    position: absolute;
     color: white;
     left: 526px;
 }
@@ -383,19 +386,21 @@ nav .active {
     color: white;
     position: relative !important;
     left: 324px;
-    top: 80px;
-    
+    top: 120px;
 }
 
 .column2 {
     position: relative;
-    max-height: 130px;
+    min-height: 120px;
+    max-height: 190px;
+    left: 68px;
 }
  
 .no-trailer {
     text-align: center;
     position: relative;
-    top: 200px;
+    top: 220px;
+    
 }
 
 .modal-trigger:hover {
