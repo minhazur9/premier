@@ -7,7 +7,8 @@ import ShowDetails from '../pages/shows/ShowDetails';
 import ShowIndex from '../pages/shows/ShowIndex';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
-import ProfileDetails from '../pages/ProfileDetails'
+import ProfileDetails from '../pages/ProfileDetails';
+import ProfileIndex from '../pages/ProfileIndex';
 
 
 const Routes = (props) => {
@@ -39,6 +40,7 @@ const Routes = (props) => {
         <Route path="/login" render={() => <Login handleLogin={props.handleLogin} redirect={redirect}/>}/>
         <Route path='/signup' render={() => <Signup handleSignup={props.handleSignup} redirect={redirect}/>}/>
         <Route path='/profiles/:profileId' component={(props) => <ProfileDetails userId={userId} loggedIn = {loggedIn} profileId={props.match.params.profileId}/>}/>
+        <Route path='/profiles' component={ProfileIndex}/>
     </Switch>
     )
 }

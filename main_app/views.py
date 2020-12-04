@@ -25,7 +25,9 @@ import json
 
 def profiles(request):
     allProfiles = Profile.objects.all()
-    allProfiles = serializers.serialize('json',allProfiles)
+    allProfiles = serializers.serialize('python',allProfiles)
+    allProfiles = [d['fields'] for d in allProfiles]
+    allProfiles = json.dumps(allProfiles)
     return HttpResponse(allProfiles)
 
 def movies(request):
