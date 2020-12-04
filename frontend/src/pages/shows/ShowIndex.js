@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import MovieNav from '../../components/movies/MovieNav'
 import ShowCard from '../../components/shows/ShowCard'
 import {Link} from 'react-router-dom'
 
@@ -8,7 +7,8 @@ class ShowIndex extends React.Component {
     state = {
         shows: [],
         loading: true,
-        page: 1
+        page: 1,
+        catagory: 'airing_today'
     }
 
     // Render Loading Icon
@@ -23,7 +23,7 @@ class ShowIndex extends React.Component {
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return this.state.shows.map((show) => {
             return (
-                <ShowCard key={show.id} id={show.id} title={show.name} image={`${imagePath}${show.poster_path}`}/>   
+                <ShowCard  voteAverage={show.vote_average} key={show.id} id={show.id} title={show.name} image={`${imagePath}${show.poster_path}`}/>   
             )     
         })
     }
@@ -31,33 +31,67 @@ class ShowIndex extends React.Component {
     handlePrevShowPage = () => {
         const key = '47b253083f612b83066bfaf81a01e411'
         const pageNum = this.state.page - 1;
+        const catagory = this.state.catagory;
         this.setState({page:pageNum})
-        axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=${pageNum}`)
+        axios.get(`https://api.themoviedb.org/3/tv/${catagory}?api_key=${key}&language=en-US&page=${pageNum}`)
             .then((response) => this.setState({shows: response.data.results, loading: false}))
     }
 
     handleNextShowPage = () => {
         const key = '47b253083f612b83066bfaf81a01e411'
         const pageNum = this.state.page + 1;
+        const catagory = this.state.catagory;
         this.setState({page:pageNum})
-        axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=${pageNum}`)
+        axios.get(`https://api.themoviedb.org/3/tv/${catagory}?api_key=${key}&language=en-US&page=${pageNum}`)
             .then((response) => this.setState({shows: response.data.results, loading: false}))
     }
 
 
     componentDidMount() {
         const key = '47b253083f612b83066bfaf81a01e411'
-        axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`)
+        const catagory = this.state.catagory;
+        axios.get(`https://api.themoviedb.org/3/tv/${catagory}?api_key=${key}&language=en-US&page=1`)
             .then((response) => {
                 this.setState({shows: response.data.results, loading: false})
             })
+    }
+
+    renderPopular = (e) => {
+        const key = '47b253083f612b83066bfaf81a01e411'
+        axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`)
+            .then((response) => this.setState({catagory:'popular', shows: response.data.results}) )
+    }
+
+    renderNowPlaying = (e) => {
+        const key = '47b253083f612b83066bfaf81a01e411'
+        axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=${key}&language=en-US&page=1`)
+            .then((response) => this.setState({catagory:'top_rated', shows: response.data.results}) )
+    }
+
+    renderToday = (e) => {
+        const key = '47b253083f612b83066bfaf81a01e411'
+        axios.get(`https://api.themoviedb.org/3/tv/airing_today?api_key=${key}&language=en-US&page=1`)
+            .then((response) => this.setState({catagory:'now_playing', shows: response.data.results}) )
+    }
+
+    renderUpcoming = (e) => {
+        const key = '47b253083f612b83066bfaf81a01e411'
+        axios.get(`https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=1`)
+            .then((response) => this.setState({catagory:'on_the_air', shows: response.data.results}) )
     }
 
     render() {
         return(
         <>
         <h1>All Shows</h1>
-        <MovieNav/>
+        <aside className='nav-wrapper #03a9f4 light-blue movie-nav '>
+            <ul>
+                <li className='catagory-item'><Link to='#' onClick={this.renderToday} className='catagory-link' >Now Playing</Link></li>
+                <li className='catagory-item'><Link to='#' onClick={this.renderPopular} className='catagory-link' >Popular</Link></li>
+                <li className='catagory-item'><Link to='#' onClick={this.renderNowPlaying} className='catagory-link' >Top Rated</Link></li>
+                <li className='catagory-item'><Link to='#' onClick={this.renderUpcoming} className='catagory-link' >Upcoming</Link></li>
+            </ul>
+    </aside>
         <ul className="movie-list">
             {this.state.loading ? this.renderLoadingIcon() : this.renderShowCards()}
             {this.state.page < 500 &&

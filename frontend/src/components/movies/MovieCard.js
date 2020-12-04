@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 
 function MovieCard(props) {
     const showInfo = (e) => {
-          const info = e.currentTarget.childNodes[0].childNodes[0];
+          const info = e.currentTarget.childNodes[0].childNodes[0].childNodes[0];
+          e.currentTarget.childNodes[0].childNodes[0].style.animationName = "fadeToBlack"
           e.currentTarget.style.animationName = 'select';
           info.style.animationName = 'slideUp';       
     }
 
     const hideInfo = (e) => {
-        const info = e.currentTarget.childNodes[0].childNodes[0];
+          const info = e.currentTarget.childNodes[0].childNodes[0].childNodes[0];
+          e.currentTarget.childNodes[0].childNodes[0].style.animationName = "fadeFromBlack"
           e.currentTarget.style.animationName = 'deselect';
           info.style.animationName = 'slideDown';
     }
@@ -30,9 +32,11 @@ function MovieCard(props) {
             <Link className="movie-link"  to={`/movies/${props.id}`}>
             <div onMouseEnter={showInfo} onMouseLeave={hideInfo} className='movie-card'>
                 <div style={{backgroundImage: `url(${props.image})`}} className='card-poster'> 
+                <div className="card-overlay">
                 <div className="movie-card-info">
                     <p className='card-title'>{props.title}</p>
                     {colorCodeScore()}
+                </div>
                 </div>
                 </div>
             </div>
