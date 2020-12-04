@@ -14,13 +14,16 @@ class ProfileDetails extends React.Component {
     componentDidMount() {
         const profileId = this.props.profileId
         axios.get(`http://localhost:8000/premier/profiles/${profileId}`)
-            .then((response) => this.setState({profile:response.data[0].fields}))
+            .then((response) => {
+                console.log(response.data);
+                this.setState({profile:response.data[0]})
+            })
     }
 
 
     render() {
         const userId = this.props.userId
-        console.log(userId)
+        console.log(this.state.profile)
         return (
             <div className="profile-details">
             <h3 className="full-name">{this.state.profile.first_name} {this.state.profile.last_name}</h3>

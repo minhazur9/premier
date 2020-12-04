@@ -42,7 +42,9 @@ def shows(request):
 
 def profile(request,profile_id):
     profile = Profile.objects.filter(id=profile_id)
-    profile = serializers.serialize('json',profile)
+    profile = serializers.serialize('python',profile)
+    profile = [d['fields'] for d in profile]
+    profile = json.dumps(profile)
     return HttpResponse(profile)
 
 def movieRecs(request,user_id):

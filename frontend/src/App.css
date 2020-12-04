@@ -637,4 +637,11 @@ label .active {
   .profile-details {
       max-height: 100vh;
   }
+
+/* ----------------- Profile Index */
+
+.profile-item {
+    list-style: none;
+    font-size: 25px
+}
   
