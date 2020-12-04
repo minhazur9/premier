@@ -598,7 +598,6 @@ label .active {
       border: solid 2px black;
       background: url('https://www.edmundsgovtech.com/wp-content/uploads/2020/01/default-picture_0_0.png');
       background-size:cover;
-
   }
 
   .full-name {
@@ -702,6 +701,45 @@ label .active {
     height: 77px;
     border: black solid 2px;
     border-radius: 15px;
+}
+
+.featured {
+    top: 50px;
+    left: 120px;
+    width: 700px;
+    height: 403px;
+    border: solid 2px black;
+    position: relative;
+}
+
+.slider .indicators .indicator-item.active {
+    background-color: #03A9F4;
+}
+
+.popular-movies-header {
+    left: 1120px;
+    bottom: 400px;
+    position: relative;
+}
+
+.popular-movies {
+    overflow-y: auto;
+    left: 1100px;
+    bottom: 370px;
+    position: relative;
+    height: 500px;
+    width: 350px;
+    border: solid 2px black;
+}
+
+.popular-link {
+    font-size:30px;
+    overflow-x:hidden;
+    color: black;
+}
+
+.popular-item {
+   border-bottom: black 2px solid;
 }
 
 

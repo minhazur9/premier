@@ -10,7 +10,8 @@ class MovieIndex extends React.Component {
         movies: [],
         loading: true,
         page: 1,
-        catagory: 'now_playing'
+        catagory: 'now_playing',
+        header: 'Now Playing'
     } 
 
     handlePrevMoviePage = () => {
@@ -31,10 +32,6 @@ class MovieIndex extends React.Component {
         axios.get(`https://api.themoviedb.org/3/movie/${catagory}?api_key=${key}&language=en-US&page=${pageNum}`)
             .then((response) => this.setState({movies: response.data.results, loading: false}))
     }
-
-    rerender
-
-    
 
     // Render Loading Icon
     renderLoadingIcon() {
@@ -78,25 +75,25 @@ class MovieIndex extends React.Component {
     renderPopular = (e) => {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`)
-            .then((response) => this.setState({catagory:'popular', movies: response.data.results}) )
+            .then((response) => this.setState({catagory:'popular', movies: response.data.results, header:'Popular'}) )
     }
 
     renderTopRated = (e) => {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`)
-            .then((response) => this.setState({catagory:'top_rated', movies: response.data.results}) )
+            .then((response) => this.setState({catagory:'top_rated', movies: response.data.results, header:'Top Rated'}) )
     }
 
     renderNowPlaying = (e) => {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`)
-            .then((response) => this.setState({catagory:'now_playing', movies: response.data.results}) )
+            .then((response) => this.setState({catagory:'now_playing', movies: response.data.results, header:'Now Playing'}) )
     }
 
     renderUpcoming = (e) => {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1`)
-            .then((response) => this.setState({catagory:'upcoming', movies: response.data.results}) )
+            .then((response) => this.setState({catagory:'upcoming', movies: response.data.results, header:'Upcoming'}) )
     }
  
     componentWillUnmount() {
@@ -106,13 +103,13 @@ class MovieIndex extends React.Component {
     render() {
         return (
             <>
-            <h1>Now Playing</h1>
+            <h1>{this.state.header}</h1>
             <aside className='nav-wrapper #03a9f4 light-blue movie-nav '>
             <ul>
-                <li className='catagory-item'><Link to='#' onClick={this.renderNowPlaying} className='catagory-link' >Now Playing</Link></li>
-                <li className='catagory-item'><Link to='#' onClick={this.renderPopular} className='catagory-link' >Popular</Link></li>
-                <li className='catagory-item'><Link to='#' onClick={this.renderTopRated} className='catagory-link' >Top Rated</Link></li>
-                <li className='catagory-item'><Link to='#' onClick={this.renderUpcoming} className='catagory-link' >Upcoming</Link></li>
+                <li className='catagory-item'><Link key={1} to='#' onClick={this.renderNowPlaying} className='catagory-link' >Now Playing</Link></li>
+                <li className='catagory-item'><Link key={2} to='#' onClick={this.renderPopular} className='catagory-link' >Popular</Link></li>
+                <li className='catagory-item'><Link key={3} to='#' onClick={this.renderTopRated} className='catagory-link' >Top Rated</Link></li>
+                <li className='catagory-item'><Link key={4} to='#' onClick={this.renderUpcoming} className='catagory-link' >Upcoming</Link></li>
             </ul>
     </aside>
                 <ul className="movie-list">

@@ -8,7 +8,8 @@ class ShowIndex extends React.Component {
         shows: [],
         loading: true,
         page: 1,
-        catagory: 'airing_today'
+        catagory: 'airing_today',
+        header: 'Now Playing'
     }
 
     // Render Loading Icon
@@ -59,37 +60,37 @@ class ShowIndex extends React.Component {
     renderPopular = (e) => {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`)
-            .then((response) => this.setState({catagory:'popular', shows: response.data.results}) )
+            .then((response) => this.setState({catagory:'popular', shows: response.data.results, header:'Popular'}) )
     }
 
     renderNowPlaying = (e) => {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=${key}&language=en-US&page=1`)
-            .then((response) => this.setState({catagory:'top_rated', shows: response.data.results}) )
+            .then((response) => this.setState({catagory:'top_rated', shows: response.data.results, header:'Top Rated'}) )
     }
 
     renderToday = (e) => {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/tv/airing_today?api_key=${key}&language=en-US&page=1`)
-            .then((response) => this.setState({catagory:'now_playing', shows: response.data.results}) )
+            .then((response) => this.setState({catagory:'now_playing', shows: response.data.results, header:'Now Playing'}) )
     }
 
     renderUpcoming = (e) => {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=1`)
-            .then((response) => this.setState({catagory:'on_the_air', shows: response.data.results}) )
+            .then((response) => this.setState({catagory:'on_the_air', shows: response.data.results, header:'Upcoming'}) )
     }
 
     render() {
         return(
         <>
-        <h1>All Shows</h1>
+        <h1>{this.state.header}</h1>
         <aside className='nav-wrapper #03a9f4 light-blue movie-nav '>
             <ul>
-                <li className='catagory-item'><Link to='#' onClick={this.renderToday} className='catagory-link' >Now Playing</Link></li>
-                <li className='catagory-item'><Link to='#' onClick={this.renderPopular} className='catagory-link' >Popular</Link></li>
-                <li className='catagory-item'><Link to='#' onClick={this.renderNowPlaying} className='catagory-link' >Top Rated</Link></li>
-                <li className='catagory-item'><Link to='#' onClick={this.renderUpcoming} className='catagory-link' >Upcoming</Link></li>
+                <li className='catagory-item'><Link to='#' key={1} onClick={this.renderToday} className='catagory-link' >Now Playing</Link></li>
+                <li className='catagory-item'><Link to='#' key={2} onClick={this.renderPopular} className='catagory-link' >Popular</Link></li>
+                <li className='catagory-item'><Link to='#' key={3} onClick={this.renderNowPlaying} className='catagory-link' >Top Rated</Link></li>
+                <li className='catagory-item'><Link to='#' key={4} onClick={this.renderUpcoming} className='catagory-link' >Upcoming</Link></li>
             </ul>
     </aside>
         <ul className="movie-list">

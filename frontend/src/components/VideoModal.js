@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 
-class VideoModal extends Component {
+class VideoModal extends React.Component {
   componentDidMount() {
     const options = {
       onOpenStart: () => {
@@ -29,11 +29,6 @@ class VideoModal extends Component {
       endingTop: "10%",
     };
     M.Modal.init(this.Modal, options);
-    // If you want to work on instance of the Modal then you can use the below code snippet 
-    // let instance = M.Modal.getInstance(this.Modal);
-    // instance.open();
-    // instance.close();
-    // instance.destroy();
   }
 
   render() {
@@ -53,15 +48,13 @@ class VideoModal extends Component {
           id="modal1"
           className="modal"
         >
-          {/* If you want Bottom Sheet Modal then add 
-        bottom-sheet class */}
           <div className="modal-content">
             {this.props.trailerLink !== "" 
-            ? <iframe width="945" height="506" src={this.props.trailerLink} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            ? <iframe width="945" height="506" src={this.props.trailerLink} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             :  <h1 className="no-trailer">No Trailer Available</h1>
             }
           </div>
-          <div class="modal-footer">
+          <div className="modal-footer">
           </div>
         </div>
       </>
