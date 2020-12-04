@@ -81,8 +81,10 @@ class MovieDetails extends React.Component {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${key}&language=en-US`)
         .then((response) => {
-            const videoKey = response.data.results[0].key
-            this.setState({trailerLink:videoPath+videoKey})
+            if(response.data.results !== undefined && response.data.results.length > 0) {
+                const videoKey = response.data.results[0].key
+                this.setState({trailerLink:videoPath+videoKey})
+            }
         })
         
     }
@@ -109,11 +111,15 @@ class MovieDetails extends React.Component {
                     {this.renderUserRating(this.state.userAverage)}
                     <p className="run-time">Runtime: {this.state.movie.runtime} Minutes</p>
                     <ul className="production">{this.renderProductionCompanies()}</ul>
+                    <div className="column2">
                     {this.renderDate()}
                     <ul className="genres">{this.renderGenres()}</ul>
+                    </div>
+                    <div className="column3">
                     <p className="overview-header">Overview</p>
                     <p className="overview">{this.state.movie.overview}</p>
                     <VideoModal trailerLink={this.state.trailerLink} />
+                    </div>
                 </div>
             </>
         )
