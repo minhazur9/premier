@@ -10,7 +10,8 @@ class ShowDetails extends React.Component {
         show: {},
         userAverage: '---',
         loading: true,
-        clicked:false
+        clicked:false,
+        genreList: []
     }
 
     // Render Loading Icon
@@ -108,10 +109,24 @@ class ShowDetails extends React.Component {
                     {this.renderUserRating(this.state.userAverage)}
                     <p className="episode-count">{this.state.show.number_of_episodes} Episodes</p>
                     <p className="season-count">{this.state.show.number_of_seasons} Seasons</p>
+                    <div className="column2">
                     {this.renderDates()}
+                    <ul className="genres">{this.renderGenres()}</ul>
+                    </div>
+                    <div className="column3">
+                    <p className="overview-header">Overview</p>
+                    <p className="overview">{this.state.show.overview}</p>
+                    {/* <VideoModal trailerLink={this.state.trailerLink} /> */}
+                    </div>
                 </div>
                 </>
         )
+    }
+
+    renderGenres() {
+        return this.state.genreList.slice(0,3).map((genre) => (
+            <li className="genre-name">{genre.name}</li>
+        ))
     }
 
     componentDidMount() {
@@ -119,7 +134,8 @@ class ShowDetails extends React.Component {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/tv/${showId}?api_key=${key}&language=en-US`)
         .then((response) => {
-            this.setState({show:response.data, loading:false})
+            console.log(response.data)
+            this.setState({show:response.data, loading:false, genreList:response.data.genres})
         })
         for(let i = 0; i < this.props.shows.length; i++) {
             if(this.props.shows[i].show_id == this.props.showId) {

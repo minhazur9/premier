@@ -55,7 +55,6 @@ class MovieDetails extends React.Component {
         else colorClass = "bad"
         return (
             <div className={`score-container user-score ${colorClass}`}>
-            {Number(userAverage) >= 8 && console.log(this.className)}
             {userAverage.length === 1 ? userAverage + '.0' : userAverage}
         </div>
         )
@@ -93,7 +92,6 @@ class MovieDetails extends React.Component {
     renderMovieDetails() {
         const criticAverage = Number(this.state.movie.vote_average).toString();
         const imagePath = 'https://image.tmdb.org/t/p/original'
-        console.log(`${imagePath}${this.state.image}`)
         return (
             <>
                 <div style={{backgroundImage: `url(${imagePath}${this.state.movie.poster_path})`}} className='movie-poster'></div>
@@ -148,10 +146,8 @@ class MovieDetails extends React.Component {
     componentDidMount() {
         const movieId = this.props.movieId
         const key = '47b253083f612b83066bfaf81a01e411'
-        console.log(movieId)
         axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}&language=en-US`)
         .then((response) => {
-            console.log(response.data)
             this.setState({movie:response.data, 
                           companyList:response.data.production_companies, 
                           genreList:response.data.genres, 
