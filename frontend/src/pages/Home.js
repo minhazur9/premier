@@ -3,13 +3,16 @@ import axios from 'axios';
 
 class Home extends React.Component {
 
-    // componentDidMount() {
-    //     axios.get('http://localhost:8000/premier/profile')
-    //         .then((response) => console.log(response.data))
-    // }
+    state = {
+        movies: [],
+        shows: []
+    }
+
     render() {
         return (
-            <h1>Home</h1>
+            <div className='edge'>
+            <h1 className='title-logo'>Premier</h1>
+            </div>
         )
     }
 }

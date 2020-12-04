@@ -9,11 +9,12 @@ function Navbar(props) {
       <ul className="left hide-on-med-and-down">
         <li><NavLink to="/movies" className='link movies-tab'>Movies</NavLink></li>
         <li><NavLink to="/shows" className='link'>TV Shows</NavLink></li>
+        <li><NavLink exact to="/profiles" className='link'>Users</NavLink></li>
       </ul>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
       {props.loggedIn
           ? <><li><NavLink to={`/profiles/${props.userId-1}`} className="link">My Account</NavLink></li>
-          <li><Link to="#" onClick={props.logOut} className='link' >Logout</Link></li></>
+          <li><Link to="#" onClick={props.logOut} className='link'>Logout</Link></li></>
           :  <><li><NavLink to="/signup" className='link' >Signup</NavLink></li>
               <li><NavLink to="/login" className='link'>Login</NavLink></li></>
       }

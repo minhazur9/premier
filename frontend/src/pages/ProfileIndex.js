@@ -26,7 +26,7 @@ class ProfileIndex extends React.Component {
     render() {
         return (
             <>
-            <h1>Profiles</h1>
+            <h1 className="profile-index-header">Check out other lists!</h1>
             {this.renderProfiles()}
             </>
         )
