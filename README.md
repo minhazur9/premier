@@ -38,6 +38,24 @@ Users should be able to see their profile details like name, email, and profile 
 
 You should also be able to see a list of recommendations even if you are not logged in which are all linked to their details pages.
 
+### Profile Index Page
 
+Users are are able to pick and choose the profile they would like to see and they can view others peoples profiles and recommendations
 
+## ERD
+![ERD](assets/ERD.PNG)
+
+## Wireframes
+
+### Home Page
+![Home](assets/Home.PNG)
+
+### Index Page
+![ERD](assets/Index.PNG)
+
+## Details Page
+![ERD](assets/Details.PNG)
+
+## Profile Page
+![ERD](assets/Profile.PNG)
 
