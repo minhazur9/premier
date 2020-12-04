@@ -528,7 +528,7 @@ label .active {
 .signup-form {
     position: relative;
     left:20vw;
-    bottom: 5vw;
+    bottom: 2vw;
 }
 
 /* ----------------- Loading Icon */
@@ -740,6 +740,21 @@ label .active {
 
 .popular-item {
    border-bottom: black 2px solid;
+}
+
+.home-page {
+    max-height: 100vh;
+}
+
+.login-header {
+    position: relative;
+    left: 300px;
+}
+
+.signup-header {
+    position: relative;
+    left: 300px;
+    bottom: 10px;
 }
 
 

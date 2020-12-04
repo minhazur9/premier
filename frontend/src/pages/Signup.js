@@ -26,7 +26,7 @@ class Signup extends React.Component {
     render() {
         return (
             <>
-            <h1>Signup</h1>
+            <h1 className="signup-header">Signup</h1>
             <form  onSubmit={e => {
                 this.props.handleSignup(e, this.state)
                 if(this.state.password !== this.state.verify ) return;

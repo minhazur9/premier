@@ -37,7 +37,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <> 
+            <div className='home-page'> 
             <div className="featured">
                 <Slider movie1={this.state.movies[0]}/>
             </div>
@@ -47,7 +47,7 @@ class Home extends React.Component {
                 {this.renderPopularMovies()}
             </ul>
             </div>
-            </>
+            </div>
         )
     }
 }

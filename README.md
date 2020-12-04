@@ -4,6 +4,10 @@
 
 Premier is a website where users will be able to look up information on specific movies, read reviews, scores, and also make their own reviews if they have an account.
 
+## Technologies Used
+
+HTML, CSS, Javascript, React.js, Django, Python, Materialize.css
+
 ## User Stories
 
 ### Home Page
