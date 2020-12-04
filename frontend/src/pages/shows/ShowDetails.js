@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-axios.defaults.xsrfCookieName = 'csrftoken'
-axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
+import VideoModal from '../../components/VideoModal'
 
 class ShowDetails extends React.Component {
 
@@ -11,7 +10,8 @@ class ShowDetails extends React.Component {
         userAverage: '---',
         loading: true,
         clicked:false,
-        genreList: []
+        genreList: [],
+        trailerLink: '',
     }
 
     // Render Loading Icon
@@ -36,6 +36,21 @@ class ShowDetails extends React.Component {
             {criticAverage.length === 1 ? criticAverage + '.0' : criticAverage}
         </div>
         )
+    }
+
+    renderTrailer() {
+        const showId = this.props.showId
+        const videoPath = 'https://www.youtube.com/embed/'
+        const key = '47b253083f612b83066bfaf81a01e411'
+        axios.get(`https://api.themoviedb.org/3/tv/${showId}/videos?api_key=${key}&language=en-US`)
+        .then((response) => {
+            console.log(response.data)
+            if(response.data.results !== undefined && response.data.results.length > 0) {
+                const videoKey = response.data.results[0].key
+                this.setState({trailerLink:videoPath+videoKey})
+            }
+        })
+        
     }
 
 
@@ -116,7 +131,7 @@ class ShowDetails extends React.Component {
                     <div className="column3">
                     <p className="overview-header">Overview</p>
                     <p className="overview">{this.state.show.overview}</p>
-                    {/* <VideoModal trailerLink={this.state.trailerLink} /> */}
+                    <VideoModal trailerLink={this.state.trailerLink} />
                     </div>
                 </div>
                 </>
@@ -143,6 +158,7 @@ class ShowDetails extends React.Component {
                 return;
             }
         }
+        this.renderTrailer()
     }
     
     render() {
