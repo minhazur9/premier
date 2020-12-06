@@ -757,5 +757,35 @@ label .active {
     bottom: 10px;
 }
 
+/* ----------------- Review Section */
+
+.review-section {
+    position: relative;
+    margin-top:40px;
+    background-color: #00597F;
+    margin-bottom: 40px;
+    height: 830px;
+    margin-left: 30px;
+    margin-right:30px;
+    box-shadow: 8px 8px 3px rgba(2, 2, 2, 0.4);
+    color:white;
+}
+
+.review-header {
+    position: relative;
+    left: 150px;
+    top: 50px;
+}
+
+.review-grid {
+    display:grid;
+    position: absolute;
+    grid-template-columns: 1fr 1fr;
+    top: 120px;
+    width: 80vw;
+    height: 50px;
+    left: 150px;
+}
+
 
   
