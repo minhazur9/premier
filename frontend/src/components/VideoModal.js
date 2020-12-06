@@ -12,6 +12,7 @@ class VideoModal extends React.Component {
         
       },
       onCloseStart: () => {
+        
       },
       onCloseEnd: () => {
         const iframe = document.querySelector('iframe')

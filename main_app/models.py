@@ -28,3 +28,13 @@ class Show(models.Model):
     def __str__(self):
         return f"{self.title} from {self.user.username}'s list"
 
+class Review(models.Model):
+    review_id = models.IntegerField()
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    content = models.TextField()
+    movie_id = models.IntegerField(null=True)
+    show_id = models.ShowField(null=True)
+
+    def __str__(self):
+        return f"Review made by {self.user.first_name}"
+
