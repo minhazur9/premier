@@ -31,8 +31,8 @@ class Show(models.Model):
 class Review(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     content = models.TextField()
-    movie_id = models.IntegerField(null=True)
-    show_id = models.IntegerField(null=True)
+    movie_id = models.IntegerField(null=True, blank=True)
+    show_id = models.IntegerField(null=True,blank=True)
     score = models.IntegerField()
 
     def __str__(self):

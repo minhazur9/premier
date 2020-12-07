@@ -14,4 +14,5 @@ urlpatterns = [
     path('profiles/<int:user_id>/movies/<int:movie_id>/delete', views.deleteMovieRecs, name="delete_movie"),
     path('profiles/<int:user_id>/movies/', views.movieRecs, name="find_movies"),
     path('profiles/<int:profile_id>/', views.profile, name="profile"),
+    path('movies/reviews', views.movieReviews, name="all_movie_reviews")
 ]

@@ -11,18 +11,7 @@ from rest_framework.views import APIView
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 import json
 
-
-# Create your views here.
-
-# class ProfileView(generics.CreateAPIView):
-#     allProfiles = Profile.objects.all()
-#     serializer_class = ProfileSerializer
-
-
-# @api_view(['GET'])
-# @permission_classes((IsAuthenticated, ))
-# @authentication_classes((JSONWebTokenAuthentication,))
-
+# show all profiles
 def profiles(request):
     allProfiles = Profile.objects.all()
     allProfiles = serializers.serialize('python',allProfiles)
@@ -30,16 +19,19 @@ def profiles(request):
     allProfiles = json.dumps(allProfiles)
     return HttpResponse(allProfiles)
 
+# show all movie recs by all users
 def movies(request):
     allMovies = Movie.objects.all()
     allMovies = serializers.serialize('json',allMovies)
     return HttpResponse(allMovies)
 
+# show all show rec by all users
 def shows(request):
     allShows = Show.objects.all()
     allShows = serializers.serialize('json',allShows)
     return HttpResponse(allShows)
 
+# show your profile
 def profile(request,profile_id):
     profile = Profile.objects.filter(id=profile_id)
     profile = serializers.serialize('python',profile)
@@ -47,6 +39,7 @@ def profile(request,profile_id):
     profile = json.dumps(profile)
     return HttpResponse(profile)
 
+# show movie recs by specific user
 def movieRecs(request,user_id):
     movies = Movie.objects.filter(user=user_id)
     movies = serializers.serialize('python',movies)
@@ -54,6 +47,7 @@ def movieRecs(request,user_id):
     movies = json.dumps(movies)
     return HttpResponse(movies)
 
+# show show rec by specific user
 def showRecs(request,user_id):
     shows = Show.objects.filter(user=user_id)
     shows = serializers.serialize('python',shows)
@@ -61,14 +55,24 @@ def showRecs(request,user_id):
     shows = json.dumps(shows)
     return HttpResponse(shows)
 
+# delete user's movie recs
 def deleteMovieRecs(request,user_id,movie_id):
     movies = Movie.objects.filter(user=user_id).filter(movie_id=movie_id).delete()
     return HttpResponse(movies)
 
+# delete user's show recs
 def deleteShowRecs(request,user_id,show_id):
     shows = Show.objects.filter(user=user_id).filter(show_id=show_id).delete()
     return HttpResponse(shows)
-    
+
+# show all movie reviews
+def movieReviews(request):
+    reviews = Review.objects.exclude(movie_id__isnull=True)
+    reviews = serializers.serialize('python',reviews)
+    reviews = [d['fields'] for d in reviews]
+    reviews = json.dumps(reviews)
+    return HttpResponse(reviews)
+   
 
 class CurrentUser(APIView):
 
@@ -112,5 +116,8 @@ class MovieList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
 
         
