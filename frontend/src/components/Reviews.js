@@ -1,13 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 
+import ReviewModal from '../components/ReviewModal';
+
 class Reviews extends React.Component {
     state = {
         reviews: []
     }
 
     renderReview = () => {
-        
+
     }
 
     render() {
@@ -15,9 +17,9 @@ class Reviews extends React.Component {
             <>
             <div className="review-section">
                 <h3 className="review-header">User Reviews</h3>
-                <div className="review-grid">
-                    
-                </div>
+                <ul className="review-grid">
+                    <ReviewModal/>
+                </ul>
             </div>
             </>
         )

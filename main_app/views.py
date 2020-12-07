@@ -72,7 +72,14 @@ def movieReviews(request):
     reviews = [d['fields'] for d in reviews]
     reviews = json.dumps(reviews)
     return HttpResponse(reviews)
-   
+
+# show all show reviews
+def showReviews(request):
+    reviews = Review.objects.exclude(show_id__isnull=True)
+    reviews = serializers.serialize('python',reviews)
+    reviews = [d['fields'] for d in reviews]
+    reviews = json.dumps(reviews)
+    return HttpResponse(reviews)
 
 class CurrentUser(APIView):
 
@@ -114,6 +121,15 @@ class MovieList(APIView):
         serializer = MovieSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class MovieReviewList(APIView):
+    authentication_classes = (JSONWebTokenAuthentication, )
+    def post(self, request, format=None):
+        serializer = MovieReviewSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

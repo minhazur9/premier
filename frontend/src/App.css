@@ -448,6 +448,10 @@ nav .active {
     overflow-y: hidden;
 }
 
+#modal2 {
+    max-width: 25%
+}
+
 .modal-trigger {
     background-color: #03a8f4;
     color: white;
@@ -780,11 +784,51 @@ label .active {
 .review-grid {
     display:grid;
     position: absolute;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     top: 120px;
     width: 80vw;
     height: 50px;
     left: 150px;
+}
+
+.add-review {
+    background-color:#03A9F4;
+    width:200px;
+    left: 0px;
+    top: 0px;
+}
+
+.add-review:hover {
+    background-color: white;
+    color:#03A9F4
+}
+
+.rating-btn {
+    margin-left: 35px;
+}
+
+input[type=range]+.thumb {
+    background-color:#4CAF50 ;
+}
+
+.score-header {
+    color:black;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    background-color: #03A9F4 ;
+}
+
+.good-slider {
+    background-color: #4CAF50 !important
+}
+
+.bad-slider {
+    background-color: #F44336 !important
+}
+
+.meh-slider {
+    background-color: #FFCC33 !important
 }
 
 
