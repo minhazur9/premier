@@ -66,11 +66,15 @@ class ReviewModal extends React.Component {
         >
           <div className="modal-content">
           <h3 className="score-header">Rate it!</h3>
-            <form>
+            <form action="">
                 <p class="range-field">
                     <input onChange={this.changeColor}  type="range" id="rating-slider" min="1" max="10" />
                 </p>
+                <h4 className="score-header">Review</h4>
+                <textarea name="review-content" id="review-content" cols="30" rows="10"></textarea>
+                <button class="waves-effect waves-light btn review-submit">Submit</button>
             </form>
+            <button class="waves-effect waves-light btn review-cancel">Cancel</button>
           </div>
           <div className="modal-footer">
           </div>

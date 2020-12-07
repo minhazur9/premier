@@ -36,5 +36,5 @@ class Review(models.Model):
     score = models.IntegerField()
 
     def __str__(self):
-        return f"Review made by {self.user.first_name}"
+        return f"Review made by {self.user.username}"
 
