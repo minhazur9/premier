@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import ReactDOM from "react-dom";
+
 import VideoModal from '../../components/VideoModal';
+import Reviews from '../../components/Reviews'
 
 class MovieDetails extends React.Component {
 
@@ -169,6 +170,7 @@ class MovieDetails extends React.Component {
                 <div className='details-background'>
                 {this.state.loading ? this.renderLoadingIcon() : this.renderMovieDetails() }
                 </div>
+                <Reviews/>
             </>
         )
     }
