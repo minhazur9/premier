@@ -114,6 +114,15 @@ class ShowList(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class ShowReviewList(APIView):
+    authentication_classes = (JSONWebTokenAuthentication,)
+    def post(self, request, format=None):
+        serializer = ShowReviewSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class MovieList(APIView):
     authentication_classes = (JSONWebTokenAuthentication,)
@@ -132,6 +141,7 @@ class MovieReviewList(APIView):
             serializers.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 
 
 

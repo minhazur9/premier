@@ -1,8 +1,13 @@
 import React from "react";
 import M from "materialize-css";
+import axios from 'axios';
 import "materialize-css/dist/css/materialize.min.css";
 
 class ReviewModal extends React.Component {
+  state = {
+    content: "",
+  }
+
   componentDidMount() {
     const options = {
       onOpenStart: () => {
@@ -47,6 +52,14 @@ class ReviewModal extends React.Component {
       }
   }
 
+  handleChange = (e) => {
+     this.setState({content: e.target.value})
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
   render() {
     return (
       <>
@@ -71,10 +84,10 @@ class ReviewModal extends React.Component {
                     <input onChange={this.changeColor}  type="range" id="rating-slider" min="1" max="10" />
                 </p>
                 <h4 className="score-header">Review</h4>
-                <textarea name="review-content" id="review-content" cols="20" rows="30"></textarea>
-                <button class="waves-effect waves-light btn review-submit">Submit</button>
+                <textarea onChange={this.handleChange} name="review-content" id="review-content" cols="20" rows="30"></textarea>
+                <button className="waves-effect waves-light btn review-submit">Submit</button>
             </form>
-            <button   class="modal-action modal-close waves-effect waves-light btn review-cancel">Cancel</button>
+            <button className="modal-action modal-close waves-effect waves-light btn review-cancel">Cancel</button>
           </div>
           <div className="modal-footer">
           </div>

@@ -230,6 +230,11 @@ nav .active {
 
 }
 
+.column4 {
+    position: relative;
+    top: 60px;
+}
+
 .overview-header {
     top: -29px;
     width: 800px;

@@ -16,4 +16,5 @@ urlpatterns = [
     path('profiles/<int:profile_id>/', views.profile, name="profile"),
     path('movies/reviews', views.movieReviews, name="all_movie_reviews"),
     path('shows/reviews', views.showReviews, name="all_show_reviews"),
+    path('shows/reviews/add', views.ShowReviewList.as_view(), name='new_show_review')
 ]

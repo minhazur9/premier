@@ -29,6 +29,10 @@ class ShowIndex extends React.Component {
         })
     }
 
+    componentWillUnmount() {
+        this._isMounted = false;
+     }
+
     handlePrevShowPage = () => {
         const key = '47b253083f612b83066bfaf81a01e411'
         const pageNum = this.state.page - 1;

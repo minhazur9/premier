@@ -117,8 +117,8 @@ class MovieDetails extends React.Component {
                     <div className="column3">
                     <p className="overview-header">Overview</p>
                     <p className="overview">{this.state.movie.overview}</p>
-                    <VideoModal trailerLink={this.state.trailerLink} />
                     </div>
+                    <div className="column4"><VideoModal trailerLink={this.state.trailerLink} /></div>
                 </div>
             </>
         )

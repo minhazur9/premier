@@ -45,20 +45,7 @@ class MovieIndex extends React.Component {
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return this.state.movies.map((movie) => {
             return (
-                <>
                 <MovieCard key={movie.id} id={movie.id} voteAverage={movie.vote_average} title={movie.title} image={`${imagePath}${movie.poster_path}`}/>   
-                </>
-            )     
-        })
-    }
-
-    renderPopularCards() {
-        const imagePath = 'https://image.tmdb.org/t/p/original'
-        return this.state.movies.map((movie) => {
-            return (
-                <>
-                <MovieCard key={movie.id} id={movie.id} voteAverage={movie.vote_average} title={movie.title} image={`${imagePath}${movie.poster_path}`}/>   
-                </>
             )     
         })
     }
@@ -115,9 +102,9 @@ class MovieIndex extends React.Component {
                 <ul className="movie-list">
                 {this.state.loading ? this.renderLoadingIcon() : this.renderMovieCards() }
                 {this.state.page < 70 &&
-                <Link to="#" onClick={this.handleNextMoviePage}><i className="fas fa-arrow-circle-right fa-4x"></i></Link> }
+                <Link key={5} to="#" onClick={this.handleNextMoviePage}><i className="fas fa-arrow-circle-right fa-4x"></i></Link> }
                 {this.state.page > 1 &&
-                <Link to="#" onClick={this.handlePrevMoviePage}><i className="fas fa-arrow-circle-left fa-4x"></i></Link> }
+                <Link key={6} to="#" onClick={this.handlePrevMoviePage}><i className="fas fa-arrow-circle-left fa-4x"></i></Link> }
                 </ul>
             </>
         )
