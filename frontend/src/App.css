@@ -840,7 +840,7 @@ input[type=range]::-webkit-slider-thumb {
 .review-submit {
     position: relative;
     color: white;
-    background-color: #03A9F4;
+    background-color: #4CAF50;
     font-family: 'Nunito', sans-serif;
     margin-top: 30px;
     left: 180px;
@@ -848,7 +848,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 .review-submit:hover {
-    background-color: #049ce2;
+    background-color: #429645;
 }
 
 .review-cancel {
