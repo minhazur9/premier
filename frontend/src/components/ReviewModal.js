@@ -3,16 +3,20 @@ import M from "materialize-css";
 import axios from 'axios';
 import "materialize-css/dist/css/materialize.min.css";
 
+
+
 class ReviewModal extends React.Component {
   state = {
     content: "",
     score: 10,
   }
 
+  thumb = document.querySelector("input[type=range]+.thumb .value")
+
   componentDidMount() {
     const options = {
       onOpenStart: () => {
-        
+
       },
       onOpenEnd: () => {
         
@@ -33,27 +37,6 @@ class ReviewModal extends React.Component {
     M.Modal.init(this.Modal, options);
   }
 
-  changeColor = (e) => {
-      const thumb = document.querySelector('input[type=range]+.thumb')
-      const value = document.querySelector('#rating-slider').value
-      if (value > 7) {
-          thumb.classList.add('good-slider')
-          thumb.classList.remove('meh-slider')
-          thumb.classList.remove('bad-slider')
-      } 
-      else if (value > 4) {
-          thumb.classList.add('meh-slider')
-          thumb.classList.remove('good-slider')
-          thumb.classList.remove('bad-slider')
-      }
-      else {
-        thumb.classList.add('bad-slider')
-        thumb.classList.remove('good-slider')
-        thumb.classList.remove('meh-slider')
-      }
-      this.setScore()
-  }
-
   handleChange = (e) => {
      this.setState({content: e.target.value})
   }
@@ -63,9 +46,12 @@ class ReviewModal extends React.Component {
   }
 
   handleSubmit = (e) => {
+    let endpoint = ""
+    if(this.props.showId) endpoint = 'http://localhost:8000/premier/shows/reviews/add'
+    else endpoint = 'http://localhost:8000/premier/movies/reviews/add'
       const config = {
         method: 'post',
-        url: "http://localhost:8000/premier/shows/reviews/add",
+        url: endpoint,
         headers: { 
           'Authorization': `JWT ${localStorage.getItem('token')}`,
         },
@@ -103,7 +89,7 @@ class ReviewModal extends React.Component {
           <h3 className="score-header">Rate it!</h3>
             <form action="" onSubmit={this.handleSubmit}>
                 <p class="range-field">
-                    <input onChange={this.changeColor}  type="range" id="rating-slider" min="1" max="10" />
+                    <input onChange={this.setScore}  type="range" id="rating-slider" min="1" max="10" />
                 </p>
                 <h4 className="score-header">Review</h4>
                 <textarea onChange={this.handleChange} name="review-content" id="review-content" cols="20" rows="30"></textarea>

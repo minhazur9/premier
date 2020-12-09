@@ -822,19 +822,23 @@ input[type=range]+.thumb {
 }
 
 input[type=range]::-webkit-slider-thumb {
-    background-color: #03A9F4 ;
+    background-color: #03A9F4
+}
+
+input[type=range]+.thumb {
+    background-color: #00597F;
 }
 
 .good-slider {
-    background-color: #4CAF50 !important
+    background-color: #4CAF50
 }
 
 .bad-slider {
-    background-color: #F44336 !important
+    background-color: #F44336 
 }
 
 .meh-slider {
-    background-color: #FFCC33 !important
+    background-color: #FFCC33 
 }
 
 #review-content {
@@ -868,6 +872,5 @@ input[type=range]::-webkit-slider-thumb {
 .review-cancel:hover {
     background-color: #e24135;
 }
-
 
   

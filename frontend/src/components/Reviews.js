@@ -18,7 +18,7 @@ class Reviews extends React.Component {
             <div className="review-section">
                 <h3 className="review-header">User Reviews</h3>
                 <ul className="review-grid">
-                    <ReviewModal user= {this.props.user} showId={this.props.showId}/>
+                    <ReviewModal user= {this.props.user} showId={this.props.showId} movieId={this.props.movieId}/>
                 </ul>
             </div>
             </>

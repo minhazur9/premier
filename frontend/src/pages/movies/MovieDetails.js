@@ -170,7 +170,7 @@ class MovieDetails extends React.Component {
                 <div className='details-background'>
                 {this.state.loading ? this.renderLoadingIcon() : this.renderMovieDetails() }
                 </div>
-                <Reviews/>
+                <Reviews user={this.props.user} movieId={this.props.movieId}/>
             </>
         )
     }
