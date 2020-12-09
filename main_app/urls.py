@@ -16,5 +16,8 @@ urlpatterns = [
     path('profiles/<int:profile_id>/', views.profile, name="profile"),
     path('movies/reviews', views.movieReviews, name="all_movie_reviews"),
     path('shows/reviews', views.showReviews, name="all_show_reviews"),
-    path('shows/reviews/add', views.ShowReviewList.as_view(), name='new_show_review')
+    path('shows/reviews/add', views.ShowReviewList.as_view(), name='new_show_review'),
+    path('movie/reviews/add', views.MovieReviewList.as_view(), name='new_movie_review'),
+    path('movies/<int:movie_id>/reviews', views.showReviewsByMovie, name="show_current_movie_reviews"),
+    path('shows/<int:show_id>/reviews', views.showReviewsByShow, name="show_current_show_reviews")
 ]

@@ -6,6 +6,7 @@ import "materialize-css/dist/css/materialize.min.css";
 class ReviewModal extends React.Component {
   state = {
     content: "",
+    score: 10,
   }
 
   componentDidMount() {
@@ -50,14 +51,35 @@ class ReviewModal extends React.Component {
         thumb.classList.remove('good-slider')
         thumb.classList.remove('meh-slider')
       }
+      this.setScore()
   }
 
   handleChange = (e) => {
      this.setState({content: e.target.value})
   }
 
+  setScore = (e) => {
+    this.setState({score: document.querySelector('#rating-slider').value})
+  }
+
   handleSubmit = (e) => {
-    e.preventDefault()
+      const config = {
+        method: 'post',
+        url: "http://localhost:8000/premier/shows/reviews/add",
+        headers: { 
+          'Authorization': `JWT ${localStorage.getItem('token')}`,
+        },
+        data : {
+            'show_id': this.props.showId, 
+            'movie_id': this.props.movieId,
+            "content": this.state.content,
+            'score': this.state.score,
+            'user': this.props.user.id
+        }
+      };
+      axios(config)
+
+    
   }
 
   render() {
@@ -79,7 +101,7 @@ class ReviewModal extends React.Component {
         >
           <div className="modal-content">
           <h3 className="score-header">Rate it!</h3>
-            <form action="">
+            <form action="" onSubmit={this.handleSubmit}>
                 <p class="range-field">
                     <input onChange={this.changeColor}  type="range" id="rating-slider" min="1" max="10" />
                 </p>

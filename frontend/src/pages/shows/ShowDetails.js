@@ -151,7 +151,7 @@ class ShowDetails extends React.Component {
         axios.get(`https://api.themoviedb.org/3/tv/${showId}?api_key=${key}&language=en-US`)
         .then((response) => {
             console.log(response.data)
-            this.setState({show:response.data, loading:false, genreList:response.data.genres})
+            this.setState({show:response.data, loading:false, genreList:response.data.genres, showId:this.props.showId})
         })
         for(let i = 0; i < this.props.shows.length; i++) {
             if(this.props.shows[i].show_id == this.props.showId) {
@@ -168,7 +168,7 @@ class ShowDetails extends React.Component {
                 <div className='details-background'>
                 {this.state.loading ? this.renderLoadingIcon() : this.renderShowDetails() }
                 </div>
-                <Reviews/>
+                <Reviews user = {this.props.user} showId = {this.props.showId}/>
             </>
         )
     }
