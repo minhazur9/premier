@@ -27,14 +27,11 @@ class ReviewList extends React.Component {
         this._isMounted = false;
      }
     
-
     componentDidMount() {
         const userId = Number(this.props.profileId)+1
         axios.get(`http://localhost:8000/premier/profiles/${userId}/reviews`)
         .then((response) => this.setState({reviews:response.data}))
     }
-
-    
 
     renderReviews() {
         return this.state.reviews.map((review) => {

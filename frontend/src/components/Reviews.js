@@ -9,6 +9,20 @@ class Reviews extends React.Component {
         reviews: [],
     }
 
+    setUserAverage = () => {
+        let total = 0;
+        let avg = '---'
+        const reviews = this.state.reviews
+        const size = this.state.reviews.length
+        if(size > 1) {
+            for(let i = 0; i < size; i++ ) {
+                total += reviews[i].score
+            }
+            avg = total / size;
+        }
+        this.props.getUserScore(avg)
+    }
+
     renderReviews = () => {
         return this.state.reviews.map((review) => {
             return(
@@ -32,6 +46,7 @@ class Reviews extends React.Component {
         }
         axios.get(`http://localhost:8000/premier/${type}/${id}/reviews`)
             .then((response) => this.setState({reviews: response.data}))
+            .then(() => this.setUserAverage())
     }
 
     render() {

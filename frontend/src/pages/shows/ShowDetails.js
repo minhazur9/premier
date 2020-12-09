@@ -57,7 +57,10 @@ class ShowDetails extends React.Component {
 
     renderUserRating(userAverage) {
         let colorClass = ""
-        if (!Number(userAverage)) colorClass = ""
+        if (!Number(userAverage)) {
+            userAverage = '---'
+            colorClass = ""
+        }
         else if (Number(userAverage) >= 8) colorClass = "good"
         else if (Number(userAverage) >= 5) colorClass = "meh"
         else colorClass = "bad"
@@ -102,9 +105,8 @@ class ShowDetails extends React.Component {
     
     // Render All the data of the show
     renderShowDetails() {
-        
+        const userAverage = Number(this.state.userAverage).toString();
         const criticAverage = Number(this.state.show.vote_average).toString();
-        
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return (
             <>
@@ -122,7 +124,7 @@ class ShowDetails extends React.Component {
                     <p className="critic-score-header">Average Critic Score</p>
                     {this.renderCriticRating(criticAverage)}
                     <p className="user-score-header">Average User Score</p>
-                    {this.renderUserRating(this.state.userAverage)}
+                    {this.renderUserRating(userAverage)}
                     <p className="episode-count">{this.state.show.number_of_episodes} Episodes</p>
                     <p className="season-count">{this.state.show.number_of_seasons} Seasons</p>
                     <div className="column2">
@@ -144,6 +146,11 @@ class ShowDetails extends React.Component {
             <li className="genre-name">{genre.name}</li>
         ))
     }
+
+    getUserScore = (score) => {
+        this.setState({userAverage:score}) 
+    }
+
 
     componentDidMount() {
         const showId = this.props.showId
@@ -168,7 +175,7 @@ class ShowDetails extends React.Component {
                 <div className='details-background'>
                 {this.state.loading ? this.renderLoadingIcon() : this.renderShowDetails() }
                 </div>
-                <Reviews loggedIn={this.props.loggedIn} title= {this.state.show.name} user = {this.props.user} showId = {this.props.showId}/>
+                <Reviews getUserScore={this.getUserScore} loggedIn={this.props.loggedIn} title= {this.state.show.name} user = {this.props.user} showId = {this.props.showId}/>
             </>
         )
     }

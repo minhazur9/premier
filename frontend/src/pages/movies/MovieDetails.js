@@ -44,19 +44,24 @@ class MovieDetails extends React.Component {
             <div className={`score-container ${colorClass}`}>
             {Number(criticAverage) >= 8 && console.log(this.className)}
             {criticAverage.length === 1 ? criticAverage + '.0' : criticAverage}
+            {console.log(criticAverage.length)}
         </div>
         )
     }
 
     renderUserRating(userAverage) {
         let colorClass = ""
-        if (!Number(userAverage)) colorClass = ""
+        if (!Number(userAverage)) {
+            userAverage = '---'
+            colorClass = ""
+        }
         else if (Number(userAverage) >= 8) colorClass = "good"
         else if (Number(userAverage) >= 5) colorClass = "meh"
         else colorClass = "bad"
         return (
             <div className={`score-container user-score ${colorClass}`}>
             {userAverage.length === 1 ? userAverage + '.0' : userAverage}
+            {console.log(userAverage.length)}
         </div>
         )
     }
@@ -92,6 +97,7 @@ class MovieDetails extends React.Component {
     // Render all the info about the movie
     renderMovieDetails() {
         const criticAverage = Number(this.state.movie.vote_average).toString();
+        const userAverage = Number(this.state.userAverage).toString();
         const imagePath = 'https://image.tmdb.org/t/p/original'
         return (
             <>
@@ -107,7 +113,7 @@ class MovieDetails extends React.Component {
                     <p className="critic-score-header">Average Critic Score</p>
                     {this.renderCriticRating(criticAverage)}
                     <p className="user-score-header">Average User Score</p>
-                    {this.renderUserRating(this.state.userAverage)}
+                    {this.renderUserRating(userAverage)}
                     <p className="run-time">Runtime: {this.state.movie.runtime} Minutes</p>
                     <ul className="production">{this.renderProductionCompanies()}</ul>
                     <div className="column2">
@@ -143,6 +149,9 @@ class MovieDetails extends React.Component {
         this.setState({clicked:true})
         
   }
+    getUserScore = (score) => {
+        this.setState({userAverage:score}) 
+    }
 
     componentDidMount() {
         const movieId = this.props.movieId
@@ -170,7 +179,7 @@ class MovieDetails extends React.Component {
                 <div className='details-background'>
                 {this.state.loading ? this.renderLoadingIcon() : this.renderMovieDetails() }
                 </div>
-                <Reviews loggedIn={this.props.loggedIn} user={this.props.user} title={this.state.movie.title} movieId={this.props.movieId}/>
+                <Reviews getUserScore={this.getUserScore} loggedIn={this.props.loggedIn} user={this.props.user} title={this.state.movie.title} movieId={this.props.movieId}/>
             </>
         )
     }
