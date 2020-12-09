@@ -18,7 +18,7 @@ class Reviews extends React.Component {
             for(let i = 0; i < size; i++ ) {
                 total += reviews[i].score
             }
-            avg = total / size;
+            avg = (total / size).toFixed(1);
         }
         this.props.getUserScore(avg)
     }
