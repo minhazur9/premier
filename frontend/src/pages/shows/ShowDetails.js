@@ -168,7 +168,7 @@ class ShowDetails extends React.Component {
                 <div className='details-background'>
                 {this.state.loading ? this.renderLoadingIcon() : this.renderShowDetails() }
                 </div>
-                <Reviews user = {this.props.user} showId = {this.props.showId}/>
+                <Reviews title= {this.state.show.name} user = {this.props.user} showId = {this.props.showId}/>
             </>
         )
     }

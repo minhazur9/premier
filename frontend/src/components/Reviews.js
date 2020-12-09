@@ -19,11 +19,12 @@ class Reviews extends React.Component {
     }
 
     componentDidMount() {
+        let showId = this.props.showId;
         let type = ''
         let id = ''
-        if(this.props.showId) {
+        if(showId) {
             type = 'shows'
-            id = this.props.showId
+            id = showId
         }
         else {
             type = 'movies'

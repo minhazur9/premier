@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from django.db.models import Count
 import json
 
 # show all profiles
@@ -94,6 +95,21 @@ def showReviewsByShow(request,show_id):
     reviews = [d['fields'] for d in reviews]
     reviews = json.dumps(reviews)
     return HttpResponse(reviews)
+
+def userReviews(request,user_id):
+    reviews = Review.objects.filter(user_id=user_id)
+    reviews = serializers.serialize('python',reviews)
+    reviews = [d['fields'] for d in reviews]
+    reviews = json.dumps(reviews)
+    return HttpResponse(reviews)
+
+def deleteReviews(request,user_id,review_id):
+    review = Review.objects.filter(user=user_id).filter(show_id=review_id)
+    if review.count() < 1:
+         review = Review.objects.filter(user=user_id).filter(movie_id=review_id).delete()
+    else: 
+        review.delete()
+    return HttpResponse(review)
 
 class CurrentUser(APIView):
 

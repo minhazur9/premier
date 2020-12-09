@@ -19,5 +19,7 @@ urlpatterns = [
     path('shows/reviews/add', views.ShowReviewList.as_view(), name='new_show_review'),
     path('movies/reviews/add', views.MovieReviewList.as_view(), name='new_movie_review'),
     path('movies/<int:movie_id>/reviews', views.showReviewsByMovie, name="show_current_movie_reviews"),
-    path('shows/<int:show_id>/reviews', views.showReviewsByShow, name="show_current_show_reviews")
+    path('shows/<int:show_id>/reviews', views.showReviewsByShow, name="show_current_show_reviews"),
+    path('profiles/<int:user_id>/reviews/<int:review_id>/delete', views.deleteReviews, name="delete_user_review"),
+    path('profiles/<int:user_id>/reviews', views.userReviews, name="user_review"),
 ]

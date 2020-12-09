@@ -616,26 +616,52 @@ label .active {
       top: 50px;
   }
 
+  .reviews-list-header {
+      display: inline;
+      position: relative;
+      left: 590px;
+      bottom:250px;
+  }
+
+  .review-list {
+      position: relative;
+      left: 550px;
+      bottom: 230px;
+      width: 330px;
+      height: 400px;
+      border: solid 2px black;
+      overflow-y: auto;
+  }
+
   .movie-recs {
     position: relative;
     width: 487px;
     height: 245px;
     left: 1000px;
-    bottom: 403px;
+    bottom: 853px;
     border: solid 2px black;
     overflow-y: auto;
+  }
+
+  li {
+      list-style: none;
+  }
+
+  .score-span {
+      position: absolute;
+      left: 240px;
   }
 
   .movie-recs-header {
     position: relative;
     left: 1167px;
-    bottom: 420px;
+    bottom: 880px;
   }
 
   .show-recs-header {
     position: relative;
     left: 1167px;
-    bottom: 420px;
+    bottom: 850px;
     margin-top: 50px;
   }
 

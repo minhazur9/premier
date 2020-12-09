@@ -28,6 +28,10 @@ class ShowRecs extends React.Component {
           window.location.reload()
     }
 
+    componentWillUnmount() {
+        this._isMounted = false;
+     }
+
 
     rendershows() {
         return this.state.shows.map((show) => {

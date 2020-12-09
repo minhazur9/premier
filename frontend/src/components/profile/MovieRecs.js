@@ -30,8 +30,11 @@ class MovieRecs extends React.Component {
         .then((response) => this.setState({movies:response.data}))
     }
 
+    componentWillUnmount() {
+        this._isMounted = false;
+     }
+
     renderMovies() {
-        console.log(this.props.userId-1 == this.props.profileId);
         return this.state.movies.map((movie) => {
             return(
                 <li id={movie.movie_id} className="recs"><Link key={movie.movie_id} className="rec-link" to={`/movies/${movie.movie_id}`}><p>{movie.title}</p></Link>
