@@ -57,10 +57,12 @@ class ReviewModal extends React.Component {
         },
         data : {
             'show_id': this.props.showId, 
+            'title': this.props.title,
             'movie_id': this.props.movieId,
             "content": this.state.content,
             'score': this.state.score,
-            'user': this.props.user.id
+            'user': this.props.user.id,
+            'username':this.props.user.username
         }
       };
       axios(config)

@@ -18,7 +18,7 @@ class ProfileIndex extends React.Component {
         return users.map((user) => {
             return (
 
-            <Link to={`/profiles/${user.user-1}`}><li className='profile-item'>{user.first_name} {user.last_name}</li></Link>
+            <Link to={`/profiles/${user.user-1}`}><li className='profile-item'>{user.username}</li></Link>
             )
         })
     }

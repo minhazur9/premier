@@ -7,6 +7,7 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     profile_pic = models.ImageField(null=False)
+    username = models.CharField(max_length=255)
     user = models.OneToOneField(User,on_delete=models.CASCADE)
 
     def __str__(self):
@@ -30,6 +31,8 @@ class Show(models.Model):
 
 class Review(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
+    username = models.CharField(max_length=255)
+    title = models.CharField(max_length=255,blank=True)
     content = models.TextField()
     movie_id = models.IntegerField(null=True, blank=True)
     show_id = models.IntegerField(null=True,blank=True)
@@ -37,4 +40,5 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review made by {self.user.username}"
+
 
