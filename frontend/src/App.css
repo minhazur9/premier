@@ -791,6 +791,7 @@ label .active {
     display:grid;
     position: absolute;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 40px;
     top: 120px;
     width: 80vw;
     height: 50px;

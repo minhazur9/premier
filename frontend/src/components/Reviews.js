@@ -8,8 +8,28 @@ class Reviews extends React.Component {
         reviews: [],
     }
 
-    renderReview = () => {
+    renderReviews = () => {
+        return this.state.reviews.map((review) => {
+            return(
+                <li>{review.content}<br/>{review.score}</li>
+            )
+            
+        })
+    }
 
+    componentDidMount() {
+        let type = ''
+        let id = ''
+        if(this.props.showId) {
+            type = 'shows'
+            id = this.props.showId
+        }
+        else {
+            type = 'movies'
+            id = this.props.movieId 
+        }
+        axios.get(`http://localhost:8000/premier/${type}/${id}/reviews`)
+            .then((response) => this.setState({reviews: response.data}))
     }
 
     render() {
@@ -19,6 +39,7 @@ class Reviews extends React.Component {
                 <h3 className="review-header">User Reviews</h3>
                 <ul className="review-grid">
                     <ReviewModal user= {this.props.user} showId={this.props.showId} movieId={this.props.movieId}/>
+                    {this.renderReviews()}
                 </ul>
             </div>
             </>
