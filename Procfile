@@ -1,0 +1,2 @@
+web: gunicorn premier.wsgi
+
