@@ -6,7 +6,6 @@ import Slider from '../components/Slider'
 class Home extends React.Component {
 
     state = {
-        movies: [],
         popularMovies: []
     }
 
@@ -14,11 +13,6 @@ class Home extends React.Component {
 
     componentDidMount() {
         const key = '47b253083f612b83066bfaf81a01e411'
-        const randomPage = Math.floor((Math.random() * 70) + 1)
-        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${randomPage}`)
-        .then((response) =>  {
-                this.setState({movies:response.data.results})
-        })
         axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`)
         .then((response) => {
             this.setState({popularMovies:response.data.results})
@@ -39,7 +33,7 @@ class Home extends React.Component {
         return (
             <div className='home-page'> 
             <div className="featured">
-                <Slider movie1={this.state.movies[0]}/>
+                <Slider/>
             </div>
             <h3 className="popular-movies-header">Popular Movies</h3>
             <div className="popular-movies">
