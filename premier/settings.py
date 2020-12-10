@@ -29,7 +29,7 @@ SECRET_KEY = 'e64ul^zp&hd%scjq4@_s-*jgar$$o40&i*)9l*xrsu&#l_*xsb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['premier-min.herokuapp.com']
+ALLOWED_HOSTS = ['premier-min.api.herokuapp.com']
 
 
 # Application definition
@@ -150,7 +150,7 @@ USE_TZ = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'frontend')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
