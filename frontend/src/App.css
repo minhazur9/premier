@@ -606,8 +606,13 @@ label .active {
       height: 350px;
       width: 350px;
       border: solid 2px black;
-      background: url('https://www.edmundsgovtech.com/wp-content/uploads/2020/01/default-picture_0_0.png');
+      /* background: url('pages/default-picture_0_0.png'); */
       background-size:cover;
+  }
+
+  .pic-src {
+      height: 347px;
+      width: 347px;
   }
 
   .full-name {

@@ -5,7 +5,7 @@ function Navbar(props) {
     return (
         <nav>
     <div className="nav-wrapper #03a9f4 light-blue">
-      <Link to="/" className="brand-logo">Premier</Link>
+      <a href="/" className="brand-logo">Premier</a>
       <ul className="left hide-on-med-and-down">
         <li><NavLink to="/movies" className='link movies-tab'>Movies</NavLink></li>
         <li><NavLink to="/shows" className='link'>TV Shows</NavLink></li>
