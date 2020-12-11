@@ -1,6 +1,7 @@
 {
     "name": "frontend",
     "version": "1.0.0",
+    "homepage": "https://premier-min.herokuapp.com/",
     "scripts": {
       "build": "cd frontend && npm install && npm run build"
     },
