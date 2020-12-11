@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-  <Router basename="https://premier-min.herokuapp.com/frontend/">
+  <Router basename="/frontend">
     <App />
   </Router>
   </React.StrictMode>,
