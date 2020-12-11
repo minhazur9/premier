@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "homepage": "https://premier-min.herokuapp.com/",
     "scripts": {
-      "build": "cd frontend && npm install && npm run build"
+      "build": "cd frontend && npm install && npm run build",
+      "start": "cd frontend && npm start"
     },
     "dependencies": {},
     "devDependencies": {},
