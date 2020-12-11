@@ -27,7 +27,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": ".",
+  "homepage": "https://premier-min.herokuapp.com/",
   "browserslist": {
     "production": [
       ">0.2%",
