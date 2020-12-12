@@ -30,7 +30,10 @@ class ReviewList extends React.Component {
     componentDidMount() {
         const userId = Number(this.props.profileId)+1
         axios.get(`https://premier-min.herokuapp.com/premier/profiles/${userId}/reviews`)
-        .then((response) => this.setState({reviews:response.data}))
+        .then((response) => 
+        {
+            this.setState({reviews:response.data})
+        })
     }
 
     renderReviews() {

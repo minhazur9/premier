@@ -22,7 +22,6 @@ class Slider extends React.Component {
         const randomPage = Math.floor((Math.random() * 500) + 1)
         axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=${randomPage}`)
         .then((response) =>  {
-          console.log(response.data.results);
           this.setState({shows:response.data.results})
         })
   }

@@ -26,8 +26,11 @@ class MovieRecs extends React.Component {
 
     componentDidMount() {
         const userId = Number(this.props.profileId)+1
-        axios.get(`https://premier-min.herokuapp.com/premier/profiles/${userId}/movies`)
-        .then((response) => this.setState({movies:response.data}))
+        axios.get(`https://premier-min.herokuapp.com/premier/profiles/${userId}/movies/`)
+        .then((response) => {
+            console.log(response);
+            this.setState({movies:response.data})
+        })
     }
 
     componentWillUnmount() {

@@ -1,4 +1,3 @@
-import Axios from 'axios'
 import React from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
@@ -10,7 +9,9 @@ class ProfileIndex extends React.Component {
 
     componentDidMount() {
         axios.get('https://premier-min.herokuapp.com/premier/profiles/')
-        .then((response) => this.setState({users:response.data}))
+        .then((response) => {
+            this.setState({users:response.data})
+        })
     }
 
     renderProfiles = () => {

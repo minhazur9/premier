@@ -9,8 +9,10 @@ class ShowRecs extends React.Component {
 
     componentDidMount() {
         const userId = Number(this.props.profileId)+1
-        axios.get(`https://premier-min.herokuapp.com/premier/profiles/${userId}/shows`)
-        .then((response) => this.setState({shows:response.data}))
+        axios.get(`https://premier-min.herokuapp.com/premier/profiles/${userId}/shows/`)
+        .then((response) => {
+            this.setState({shows:response.data})
+        })
     }
 
     handleDelete = (e) => {
