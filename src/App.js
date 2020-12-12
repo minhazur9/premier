@@ -18,7 +18,7 @@ class App extends React.Component {
 
   componentDidMount() {
     if (this.state.loggedIn) {
-      axios.get('http://localhost:8000/premier/current_user/', {
+      axios.get('https://premier-min.herokuapp.com/premier/current_user/', {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
@@ -38,7 +38,7 @@ class App extends React.Component {
   // Get token from login
   handleLogin = (e,data) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/accounts/token/', {username: data.username, password: data.password})
+    axios.post('https://premier-min.herokuapp.com/accounts/token/', {username: data.username, password: data.password})
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         this.setState({
@@ -58,7 +58,7 @@ class App extends React.Component {
   // Create a user and get token to login
   handleSignup = (e, data) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/premier/users/', 
+    axios.post('https://premier-min.herokuapp.com/premier/users/', 
     { username: data.username, 
       password: data.password, 
       first_name: data.firstName, 
