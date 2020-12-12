@@ -25,9 +25,9 @@ class App extends React.Component {
       })
         .then((response) => {
           this.setState({ username: response.data.username, user: response.data, userId: response.data.id})
-          axios.get(`http://localhost:8000/premier/profiles/${this.state.userId}/movies/`)
+          axios.get(`https://premier-min.herokuapp.com/premier/profiles/${this.state.userId}/movies/`)
           .then((response) => this.setState({movieArray:response.data}))
-          axios.get(`http://localhost:8000/premier/profiles/${this.state.userId}/shows/`)
+          axios.get(`https://premier-min.herokuapp.com/premier/profiles/${this.state.userId}/shows/`)
           .then((response) => this.setState({showArray:response.data}))
         })
       
