@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 
-import ReviewModal from '../components/ReviewModal';
+import ReviewModal from './ReviewModal';
 
 class Reviews extends React.Component {
     state = {

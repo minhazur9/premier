@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import Home from '../pages/Home';
 import MovieDetails from '../pages/movies/MovieDetails';
-import MovieIndex from '../pages//movies/MovieIndex';
+import MovieIndex from '../pages/movies/MovieIndex';
 import ShowDetails from '../pages/shows/ShowDetails';
 import ShowIndex from '../pages/shows/ShowIndex';
 import Login from '../pages/Login';
