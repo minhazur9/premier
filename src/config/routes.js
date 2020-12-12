@@ -39,8 +39,8 @@ const Routes = (props) => {
         <Route path='/shows' component={ShowIndex}/>
         <Route path="/login" render={() => <Login handleLogin={props.handleLogin} redirect={redirect}/>}/>
         <Route path='/signup' render={() => <Signup handleSignup={props.handleSignup} redirect={redirect}/>}/>
-        <Route path='/profiles/:profileId' component={(props) => <ProfileDetails userId={userId} loggedIn = {loggedIn} profileId={props.match.params.profileId}/>}/>
-        <Route path='/profiles' component={ProfileIndex}/>
+        <Route path='/profile/:profileId' component={(props) => <ProfileDetails userId={userId} loggedIn = {loggedIn} profileId={props.match.params.profileId}/>}/>
+        <Route path='/profile' component={ProfileIndex}/>
     </Switch>
     )
 }
