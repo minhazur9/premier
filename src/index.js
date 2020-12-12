@@ -4,11 +4,9 @@ import {BrowserRouter as Router, useHistory} from 'react-router-dom'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const history = useHistory();
-
 ReactDOM.render(
   <React.StrictMode>
-  <Router history={history}>
+  <Router basename="/">
     <App />
   </Router>
   </React.StrictMode>,

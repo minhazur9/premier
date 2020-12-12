@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 
-import MovieRecs from '../components/profile/MovieRecs'
-import ShowRecs from '../components/profile/ShowRecs';
-import ReviewList from '../components/profile/ReviewList';
+import MovieRecs from '../components/profiles/MovieRecs'
+import ShowRecs from '../components/profiles/ShowRecs';
+import ReviewList from '../components/profiles/ReviewList';
 
 class ProfileDetails extends React.Component {
 
