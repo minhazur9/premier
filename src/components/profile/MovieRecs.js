@@ -13,7 +13,7 @@ class MovieRecs extends React.Component {
 
         const config = {
             method: 'get',
-            url: `http://localhost:8000/premier/profiles/${userId}/movies/${movieId}/delete`,
+            url: `https://premier-min.herokuapp.com/premier/profiles/${userId}/movies/${movieId}/delete`,
             headers: { 
               'Authorization': `JWT ${localStorage.getItem('token')}`,
             },
@@ -26,7 +26,7 @@ class MovieRecs extends React.Component {
 
     componentDidMount() {
         const userId = Number(this.props.profileId)+1
-        axios.get(`http://localhost:8000/premier/profiles/${userId}/movies`)
+        axios.get(`https://premier-min.herokuapp.com/premier/profiles/${userId}/movies`)
         .then((response) => this.setState({movies:response.data}))
     }
 

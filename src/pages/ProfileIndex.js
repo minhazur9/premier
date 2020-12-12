@@ -9,7 +9,7 @@ class ProfileIndex extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8000/premier/profiles/')
+        axios.get('https://premier-min.herokuapp.com/premier/profiles/')
         .then((response) => this.setState({users:response.data}))
     }
 

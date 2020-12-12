@@ -47,8 +47,8 @@ class ReviewModal extends React.Component {
 
   handleSubmit = (e) => {
     let endpoint = ""
-    if(this.props.showId) endpoint = 'http://localhost:8000/premier/shows/reviews/add'
-    else endpoint = 'http://localhost:8000/premier/movies/reviews/add'
+    if(this.props.showId) endpoint = 'https://premier-min.herokuapp.com/premier/shows/reviews/add'
+    else endpoint = 'https://premier-min.herokuapp.com/premier/movies/reviews/add'
       const config = {
         method: 'post',
         url: endpoint,

@@ -135,7 +135,7 @@ class MovieDetails extends React.Component {
         e.preventDefault();
         const config = {
           method: 'post',
-          url: 'http://localhost:8000/premier/movies/add',
+          url: 'https://premier-min.herokuapp.com/premier/movies/add',
           headers: { 
             'Authorization': `JWT ${localStorage.getItem('token')}`,
           },

@@ -77,7 +77,7 @@ class ShowDetails extends React.Component {
           e.preventDefault();
           const config = {
             method: 'post',
-            url: 'http://localhost:8000/premier/shows/add',
+            url: 'https://premier-min.herokuapp.com/premier/shows/add',
             headers: { 
               'Authorization': `JWT ${localStorage.getItem('token')}`,
             },

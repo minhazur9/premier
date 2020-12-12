@@ -13,7 +13,7 @@ class ReviewList extends React.Component {
         console.log(e.currentTarget.parentNode)
         const config = {
             method: 'get',
-            url: `http://localhost:8000/premier/profiles/${userId}/reviews/${reviewId}/delete`,
+            url: `https://premier-min.herokuapp.com/premier/profiles/${userId}/reviews/${reviewId}/delete`,
             headers: { 
               'Authorization': `JWT ${localStorage.getItem('token')}`,
             },
@@ -29,7 +29,7 @@ class ReviewList extends React.Component {
     
     componentDidMount() {
         const userId = Number(this.props.profileId)+1
-        axios.get(`http://localhost:8000/premier/profiles/${userId}/reviews`)
+        axios.get(`https://premier-min.herokuapp.com/premier/profiles/${userId}/reviews`)
         .then((response) => this.setState({reviews:response.data}))
     }
 

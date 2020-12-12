@@ -9,7 +9,7 @@ class ShowRecs extends React.Component {
 
     componentDidMount() {
         const userId = Number(this.props.profileId)+1
-        axios.get(`http://localhost:8000/premier/profiles/${userId}/shows`)
+        axios.get(`https://premier-min.herokuapp.com/premier/profiles/${userId}/shows`)
         .then((response) => this.setState({shows:response.data}))
     }
 
@@ -19,7 +19,7 @@ class ShowRecs extends React.Component {
 
         const config = {
             method: 'get',
-            url: `http://localhost:8000/premier/profiles/${userId}/shows/${showId}/delete`,
+            url: `https://premier-min.herokuapp.com/premier/profiles/${userId}/shows/${showId}/delete`,
             headers: { 
               'Authorization': `JWT ${localStorage.getItem('token')}`,
             },

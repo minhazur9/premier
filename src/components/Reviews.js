@@ -44,7 +44,7 @@ class Reviews extends React.Component {
             type = 'movies'
             id = this.props.movieId 
         }
-        axios.get(`http://localhost:8000/premier/${type}/${id}/reviews`)
+        axios.get(`https://premier-min.herokuapp.com/premier/${type}/${id}/reviews`)
             .then((response) => this.setState({reviews: response.data}))
             .then(() => this.setUserAverage())
     }
