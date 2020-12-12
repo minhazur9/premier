@@ -2,7 +2,7 @@
     "name": "frontend",
     "version": "1.0.0",
     "scripts": {
-      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ./frontend && npm run build"
+      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && cd frontend && npm run build"
     },
     "dependencies": {},
     "devDependencies": {},
