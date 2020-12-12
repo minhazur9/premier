@@ -63,7 +63,7 @@ class Reviews extends React.Component {
             <div className="review-section">
                 <h3 className="review-header">User Reviews</h3>
                 <ul className="review-grid">
-                {this.props.loggedIn && this.state.done === false &&
+                {this.props.loggedIn &&
                     <ReviewModal refreshList={this.refreshList} title={this.props.title} user={this.props.user} showId={this.props.showId} movieId={this.props.movieId}/>
                 }
                 {this.renderReviews()}
