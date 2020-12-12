@@ -24,5 +24,5 @@ urlpatterns = [
     path('accounts/token/verify/', verify_jwt_token),
     path('accounts/token/refresh/', refresh_jwt_token),
     path('premier/',include('main_app.urls')),
-    re_path('.*', TemplateView.as_view(template_name='index.html'))
+    re_path(r'.*', TemplateView.as_view(template_name='index.html'))
 ]
