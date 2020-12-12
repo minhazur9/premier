@@ -13,7 +13,7 @@ class ProfileDetails extends React.Component {
 
     componentDidMount() {
         const profileId = this.props.profileId
-        axios.get(`https://premier-min.herokuapp.com/premier/profiles/${profileId}/`)
+        axios.get(`https://premier-min.herokuapp.com/premier/profiles/${profileId}`)
             .then((response) => {
                 this.setState({profile:response.data[0]})
             })
