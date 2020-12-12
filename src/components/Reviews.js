@@ -7,15 +7,8 @@ import ReviewModal from './ReviewModal';
 class Reviews extends React.Component {
     state = {
         reviews: [],
-        done:false,
     }
 
-    userCheck = () => {
-        const reviews = this.state.reviews;
-        if (reviews.some(review => review.username !== this.props.user.username)) {
-            this.setState({done:true});
-          }
-    }
 
     refreshList = (data) => {
         this.setUserAverage(this.setState({reviews:data}))
@@ -50,7 +43,6 @@ class Reviews extends React.Component {
         let showId = this.props.showId;
         let type = ''
         let id = ''
-        this.userCheck()
         if(showId) {
             type = 'shows'
             id = showId
@@ -61,7 +53,6 @@ class Reviews extends React.Component {
         }
         axios.get(`https://premier-min.herokuapp.com/premier/${type}/${id}/reviews`)
             .then((response) => this.setState({reviews: response.data}))
-            .then(() => this.userCheck())
             .then(() => this.setUserAverage())
         
     }
