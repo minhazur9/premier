@@ -267,6 +267,7 @@ nav .active {
 .delete-from-rec {
     background-color:#FF0000;
     color:white;
+    font-family: 'Nunito', sans-serif;
 }
 
 .delete-from-rec:hover {
@@ -516,6 +517,10 @@ label {
 
 label .active {
     background-color:white !important
+}
+
+button {
+    font-family: 'Nunito', sans-serif;
 }
 
 .myButton {
@@ -909,6 +914,8 @@ input[type=range]+.thumb {
 
 .review-text {
     font-size: 20px;
+    overflow-wrap: break-word;
+    width:250px;
 }
 
   

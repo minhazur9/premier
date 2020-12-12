@@ -22,6 +22,7 @@ class ReviewModal extends React.Component {
         
       },
       onCloseStart: () => {
+
         
       },
       onCloseEnd: () => {
@@ -45,7 +46,24 @@ class ReviewModal extends React.Component {
     this.setState({score: document.querySelector('#rating-slider').value})
   }
 
+  handleCallback = () => {
+    let showId = this.props.showId;
+        let type = ''
+        let id = ''
+        if(showId) {
+            type = 'shows'
+            id = showId
+        }
+        else {
+            type = 'movies'
+            id = this.props.movieId 
+        }
+        axios.get(`https://premier-min.herokuapp.com/premier/${type}/${id}/reviews`)
+            .then((response) => this.props.refreshList(response.data))
+  }
+
   handleSubmit = (e) => {
+    e.preventDefault();
     let endpoint = ""
     if(this.props.showId) endpoint = 'https://premier-min.herokuapp.com/premier/shows/reviews/add'
     else endpoint = 'https://premier-min.herokuapp.com/premier/movies/reviews/add'
@@ -65,7 +83,7 @@ class ReviewModal extends React.Component {
             'username':this.props.user.username
         }
       };
-      axios(config)
+      axios(config).then(() => this.handleCallback())
 
     
   }
@@ -73,12 +91,12 @@ class ReviewModal extends React.Component {
   render() {
     return (
       <>
-        <a
+        <button
           className="waves-effect waves-light btn modal-trigger add-review"
           data-target="modal2"
         >
           Add Review
-        </a>
+        </button>
 
         <div
           ref={Modal => {
@@ -95,7 +113,7 @@ class ReviewModal extends React.Component {
                 </p>
                 <h4 className="score-header">Review</h4>
                 <textarea onChange={this.handleChange} name="review-content" id="review-content" cols="20" rows="30"></textarea>
-                <button className="waves-effect waves-light btn review-submit">Submit</button>
+                <button className="modal-action modal-close waves-effect waves-light btn review-submit">Submit</button>
             </form>
             <button className="modal-action modal-close waves-effect waves-light btn review-cancel">Cancel</button>
           </div>

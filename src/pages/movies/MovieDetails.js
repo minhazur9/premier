@@ -42,9 +42,7 @@ class MovieDetails extends React.Component {
         else colorClass = "bad"
         return (
             <div className={`score-container ${colorClass}`}>
-            {Number(criticAverage) >= 8 && console.log(this.className)}
             {criticAverage.length === 1 ? criticAverage + '.0' : criticAverage}
-            {console.log(criticAverage.length)}
         </div>
         )
     }
@@ -61,7 +59,6 @@ class MovieDetails extends React.Component {
         return (
             <div className={`score-container user-score ${colorClass}`}>
             {userAverage.length === 1 ? userAverage + '.0' : userAverage}
-            {console.log(userAverage.length)}
         </div>
         )
     }

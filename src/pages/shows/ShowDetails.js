@@ -114,9 +114,9 @@ class ShowDetails extends React.Component {
                 <div className="details-text">
                 <h1>{this.props.loggedIn}</h1>
                 {this.props.loggedIn && !this.state.clicked &&
-                <a onClick={this.handleAddToList} className="add-to-rec waves-effect waves-light btn">Add to List</a> ||
+                <button onClick={this.handleAddToList} className="add-to-rec waves-effect waves-light btn">Add to List</button> ||
                 this.props.loggedIn && this.state.clicked  &&
-                <a onClick={(e) => e.preventDefault()} className="add-to-rec waves-effect waves-light btn added">Added</a>
+                <button onClick={(e) => e.preventDefault()} className="add-to-rec waves-effect waves-light btn added">Added</button>
                 }
                 
                     <h1 className='title'>{this.state.show.name}</h1>
@@ -157,7 +157,6 @@ class ShowDetails extends React.Component {
         const key = '47b253083f612b83066bfaf81a01e411'
         axios.get(`https://api.themoviedb.org/3/tv/${showId}?api_key=${key}&language=en-US`)
         .then((response) => {
-            console.log(response.data)
             this.setState({show:response.data, loading:false, genreList:response.data.genres, showId:this.props.showId})
         })
         for(let i = 0; i < this.props.shows.length; i++) {
@@ -170,12 +169,13 @@ class ShowDetails extends React.Component {
     }
     
     render() {
+        const user = this.props.user;
         return(
             <>
                 <div className='details-background'>
                 {this.state.loading ? this.renderLoadingIcon() : this.renderShowDetails() }
                 </div>
-                <Reviews getUserScore={this.getUserScore} loggedIn={this.props.loggedIn} title= {this.state.show.name} user = {this.props.user} showId = {this.props.showId}/>
+                <Reviews getUserScore={this.getUserScore} loggedIn={this.props.loggedIn} title= {this.state.show.name} user = {user} showId = {this.props.showId}/>
             </>
         )
     }

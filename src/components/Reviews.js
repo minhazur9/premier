@@ -7,9 +7,21 @@ import ReviewModal from './ReviewModal';
 class Reviews extends React.Component {
     state = {
         reviews: [],
+        done:false,
     }
 
-    setUserAverage = () => {
+    userCheck = () => {
+        const reviews = this.state.reviews;
+        if (reviews.some(review => review.username !== this.props.user.username)) {
+            this.setState({done:true});
+          }
+    }
+
+    refreshList = (data) => {
+        this.setUserAverage(this.setState({reviews:data}))
+    }
+
+    setUserAverage = (refreshList) => {
         let total = 0;
         let avg = '---'
         const reviews = this.state.reviews
@@ -24,7 +36,9 @@ class Reviews extends React.Component {
     }
 
     renderReviews = () => {
+        const userList = [];
         return this.state.reviews.map((review) => {
+            userList.push(review);
             return(
                 <li className="review-text"><Link exact to={`/profiles/${review.user-1}`}>{review.username}</Link><br/>{review.content}<br/>{review.score}/10</li>
             )
@@ -36,6 +50,7 @@ class Reviews extends React.Component {
         let showId = this.props.showId;
         let type = ''
         let id = ''
+        this.userCheck()
         if(showId) {
             type = 'shows'
             id = showId
@@ -46,7 +61,9 @@ class Reviews extends React.Component {
         }
         axios.get(`https://premier-min.herokuapp.com/premier/${type}/${id}/reviews`)
             .then((response) => this.setState({reviews: response.data}))
+            .then(() => this.userCheck())
             .then(() => this.setUserAverage())
+        
     }
 
     render() {
@@ -55,8 +72,8 @@ class Reviews extends React.Component {
             <div className="review-section">
                 <h3 className="review-header">User Reviews</h3>
                 <ul className="review-grid">
-                {this.props.loggedIn &&
-                    <ReviewModal title={this.props.title} user={this.props.user} showId={this.props.showId} movieId={this.props.movieId}/>
+                {this.props.loggedIn && this.state.done === false &&
+                    <ReviewModal refreshList={this.refreshList} title={this.props.title} user={this.props.user} showId={this.props.showId} movieId={this.props.movieId}/>
                 }
                 {this.renderReviews()}
                 </ul>

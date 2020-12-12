@@ -18,8 +18,8 @@ class ReviewList extends React.Component {
               'Authorization': `JWT ${localStorage.getItem('token')}`,
             },
           };
-          axios(config)
-          window.location.reload()
+        // e.currentTarget.parentNode.style.visibility = "hidden"
+          axios(config).then(() => this.refreshList())
           
     }
 
@@ -28,6 +28,15 @@ class ReviewList extends React.Component {
      }
     
     componentDidMount() {
+        const userId = Number(this.props.profileId)+1
+        axios.get(`https://premier-min.herokuapp.com/premier/profiles/${userId}/reviews`)
+        .then((response) => 
+        {
+            this.setState({reviews:response.data})
+        })
+    }
+
+    refreshList = () => {
         const userId = Number(this.props.profileId)+1
         axios.get(`https://premier-min.herokuapp.com/premier/profiles/${userId}/reviews`)
         .then((response) => 
@@ -52,7 +61,7 @@ class ReviewList extends React.Component {
             return(
                 <li id={id} className="recs"><Link key={id} className="rec-link" to={`/${type}/${id}`}><p>{review.title}<span className="score-span">{review.score}/10</span></p></Link>
                 {this.props.userId-1 == this.props.profileId &&
-                <a onClick={this.handleDelete} className="delete-from-rec waves-effect waves-light btn">Delete</a>
+                <button onClick={this.handleDelete} className="delete-from-rec waves-effect waves-light btn">Delete</button>
                 }
                 </li>
             )

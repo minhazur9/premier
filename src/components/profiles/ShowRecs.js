@@ -26,8 +26,16 @@ class ShowRecs extends React.Component {
               'Authorization': `JWT ${localStorage.getItem('token')}`,
             },
           };
-          axios(config)
-          window.location.reload()
+        //   e.currentTarget.parentNode.style.visibility = "hidden"
+          axios(config).then(() => this.refreshList())
+    }
+
+    refreshList = () => {
+        const userId = Number(this.props.profileId)+1
+        axios.get(`https://premier-min.herokuapp.com/premier/profiles/${userId}/shows/`)
+        .then((response) => {
+            this.setState({shows:response.data})
+        })
     }
 
     componentWillUnmount() {
@@ -40,7 +48,7 @@ class ShowRecs extends React.Component {
             return(
                 <li id={show.show_id }className="recs"><Link key={show.show_id}className="rec-link" to={`/shows/${show.show_id}`}><p>{show.title}</p></Link>
                 {this.props.userId-1 == this.props.profileId &&
-                <a onClick={this.handleDelete} className="delete-from-rec waves-effect waves-light btn">Delete</a>
+                <button onClick={this.handleDelete} className="delete-from-rec waves-effect waves-light btn">Delete</button>
                 }
                 </li>
             )
