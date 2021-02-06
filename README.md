@@ -3,6 +3,7 @@
 ## About
 
 Premier is a website where users will be able to look up information on specific movies, read reviews, scores, and also make their own reviews if they have an account.
+Live: https://premier-min.herokuapp.com/
 
 ## Technologies Used
 
