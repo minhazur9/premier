@@ -53,13 +53,15 @@ Users are are able to pick and choose the profile they would like to see and the
 ## Wireframes
 
 ### Home Page
-![Home](assets/Home.PNG)
+<img width="1522" height="806" alt="image" src="https://github.com/user-attachments/assets/6c9f4eab-e011-41c2-b4a5-7d83c31fdfc6" />
 
 ### Index Page
-![ERD](assets/Index.PNG)
+<img width="1904" height="841" alt="image" src="https://github.com/user-attachments/assets/f9a1ead0-ba70-4ff6-b729-077f197e3e7b" />
+
 
 ## Details Page
-![ERD](assets/Details.PNG)
+<img width="1816" height="788" alt="image" src="https://github.com/user-attachments/assets/e055d584-e449-4a12-9536-38f56e6a5d2f" />
+
 
 ## Profile Page
 ![ERD](assets/Profile.PNG)
