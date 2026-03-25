@@ -63,6 +63,3 @@ Users are are able to pick and choose the profile they would like to see and the
 <img width="1816" height="788" alt="image" src="https://github.com/user-attachments/assets/e055d584-e449-4a12-9536-38f56e6a5d2f" />
 
 
-## Profile Page
-![ERD](assets/Profile.PNG)
-
